@@ -100,10 +100,11 @@ void StateIntroSFML::centerLogoPosition( void ) {
 }
 
 std::unique_ptr< GameState > StateIntroSFML::getNextState( void ) {
-    return nullptr;
+    std::unique_ptr< GameState > mainMenuState( new StateMainMenu( game ) );
+    return std::move( mainMenuState );
 }
 
 void StateIntroSFML::stopState( void ) {
     introSound.stop();
-    //running = false;
+    running = false;
 }

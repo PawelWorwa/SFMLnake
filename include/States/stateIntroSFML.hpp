@@ -7,6 +7,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "../../include/States/gameState.hpp"
+#include "../../include/States/stateMainMenu.hpp"
 #include "../../include/Managment/Color.hpp"
 #include "../../include/Managment/Sound.hpp"
 #include "../../include/Managment/Texture.hpp"
