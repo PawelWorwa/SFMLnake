@@ -26,7 +26,6 @@ class ResourceManager {
         sf::Font& getFont( const std::string &key );
         sf::SoundBuffer& getSoundBuffer( const std::string &key );
         sf::Texture& getTexture( const std::string &key );
-
 };
 
 #endif // RESOURCEMANAGER_H

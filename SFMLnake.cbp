@@ -12,13 +12,14 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="sfml-graphics-s-d" />
-					<Add library="sfml-window-s-d" />
-					<Add library="sfml-system-s-d" />
-					<Add library="sfml-main-d" />
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+					<Add library="sfml-audio-d" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -28,13 +29,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="sfml-graphics-s" />
-					<Add library="sfml-window-s" />
-					<Add library="sfml-system-s" />
-					<Add library="sfml-main" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add library="sfml-audio" />
 				</Linker>
 			</Target>
 		</Build>
@@ -51,8 +53,29 @@
 			<Add library="dxguid" />
 			<Add directory="C:/00_SFML/SFML/lib" />
 		</Linker>
-		<Unit filename="cb.bmp" />
+		<Unit filename="include/Managment/color.hpp" />
+		<Unit filename="include/Managment/font.hpp" />
+		<Unit filename="include/Managment/resourceManager.hpp" />
+		<Unit filename="include/Managment/sound.hpp" />
+		<Unit filename="include/Managment/texture.hpp" />
+		<Unit filename="include/States/buttonState.hpp" />
+		<Unit filename="include/States/gameState.hpp" />
+		<Unit filename="include/States/stateIntroSFML.hpp" />
+		<Unit filename="include/States/stateMainMenu.hpp" />
+		<Unit filename="include/engine.hpp" />
+		<Unit filename="include/game.hpp" />
+		<Unit filename="include/menuButton.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Managment/color.cpp" />
+		<Unit filename="src/Managment/font.cpp" />
+		<Unit filename="src/Managment/resourceManager.cpp" />
+		<Unit filename="src/Managment/sound.cpp" />
+		<Unit filename="src/Managment/texture.cpp" />
+		<Unit filename="src/States/stateIntroSFML.cpp" />
+		<Unit filename="src/States/stateMainMenu.cpp" />
+		<Unit filename="src/engine.cpp" />
+		<Unit filename="src/game.cpp" />
+		<Unit filename="src/menuButton.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

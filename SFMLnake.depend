@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1517343042 source:c:\users\pawe³ worwa\desktop\sfmlnake\main.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\main.cpp
 	"include/engine.hpp"
 
 1486736397 c:\00_sfml\sfml\include\sfml\graphics.hpp
@@ -390,10 +390,10 @@
 	<string>
 	<vector>
 
-1516820685 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\engine.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\engine.cpp
 	"../include/engine.hpp"
 
-1516820367 c:\users\pawe³ worwa\desktop\sfmlnake\include\engine.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\engine.hpp
 	<memory>
 	<stack>
 	<SFML/Graphics/RenderWindow.hpp>
@@ -401,17 +401,17 @@
 	"../include/States/gameState.hpp"
 	"../include/States/stateIntroSFML.hpp"
 
-1516910929 c:\users\pawe³ worwa\desktop\sfmlnake\include\game.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\game.hpp
 	<SFML/Graphics/RenderWindow.hpp>
 	"../include/Managment/font.hpp"
 	"../include/Managment/resourceManager.hpp"
 	"../include/Managment/sound.hpp"
 	"../include/Managment/texture.hpp"
 
-1516910821 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\font.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\font.hpp
 	<string>
 
-1517342840 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\resourcemanager.hpp
+1517433786 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\resourcemanager.hpp
 	<SFML/Audio/SoundBuffer.hpp>
 	<SFML/Graphics/Font.hpp>
 	<SFML/Graphics/Texture.hpp>
@@ -433,24 +433,25 @@
 1486736397 c:\00_sfml\sfml\include\sfml\audio\alresource.hpp
 	<SFML/Audio/Export.hpp>
 
-1516820417 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\color.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\color.hpp
 	<SFML/Graphics/Color.hpp>
 
-1516826097 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\sound.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\sound.hpp
 	<string>
 
-1517342770 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\texture.hpp
+1517433701 c:\users\pawe³ worwa\desktop\sfmlnake\include\managment\texture.hpp
 	<string>
 
-1516818572 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\gamestate.hpp
+1517344606 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\gamestate.hpp
 	<memory>
 
-1517342850 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\stateintrosfml.hpp
+1517433846 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\stateintrosfml.hpp
 	<SFML/Audio/Sound.hpp>
 	<SFML/Graphics/Sprite.hpp>
 	<SFML/System/Clock.hpp>
 	<SFML/Window/Event.hpp>
 	"../../include/States/gameState.hpp"
+	"../../include/States/stateMainMenu.hpp"
 	"../../include/Managment/Color.hpp"
 	"../../include/Managment/Sound.hpp"
 	"../../include/Managment/Texture.hpp"
@@ -467,24 +468,50 @@
 	<SFML/Audio/AlResource.hpp>
 	<SFML/System/Vector3.hpp>
 
-1517342753 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\game.cpp
+1517433808 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\game.cpp
 	"../include/game.hpp"
 
-1517342885 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\color.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\color.cpp
 	"../../include/Managment/color.hpp"
 
-1517342889 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\font.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\font.cpp
 	"../../include/Managment/font.hpp"
 
-1517342892 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\resourcemanager.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\resourcemanager.cpp
 	"../../include/Managment/resourceManager.hpp"
 
-1517342898 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\sound.cpp
+1517344606 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\sound.cpp
 	"../../include/Managment/sound.hpp"
 
-1517342901 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\texture.cpp
+1517433669 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\managment\texture.cpp
 	"../../include/Managment/texture.hpp"
 
-1517343192 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\states\stateintrosfml.cpp
+1517434064 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\states\stateintrosfml.cpp
 	"../../include/States/stateIntroSFML.hpp"
+
+1517433985 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\statemainmenu.hpp
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Window/Event.hpp>
+	"../../include/States/buttonState.hpp"
+	"../../include/States/gameState.hpp"
+	"../../include/game.hpp"
+	"../../include/menuButton.hpp"
+
+1517434012 c:\users\pawe³ worwa\desktop\sfmlnake\include\menubutton.hpp
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/Window/Mouse.hpp>
+	"../include/States/buttonState.hpp"
+	<array>
+
+1516999576 c:\users\pawe³ worwa\desktop\sfmlnake\include\states\buttonstate.hpp
+
+1517061586 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\menubutton.cpp
+	"../include/menuButton.hpp"
+
+1517434034 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\states\statemainmenu.cpp
+	"../../include/States/stateMainMenu.hpp"
 
