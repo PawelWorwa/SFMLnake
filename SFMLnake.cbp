@@ -14,6 +14,9 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="C:/Users/Paweł Worwa/Desktop/SFMLnake/include" />
+					<Add directory="include" />
+					<Add directory="include/States" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -30,6 +33,9 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
+					<Add directory="C:/Users/Paweł Worwa/Desktop/SFMLnake/include" />
+					<Add directory="include" />
+					<Add directory="include/States" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -61,20 +67,27 @@
 		<Unit filename="include/States/buttonState.hpp" />
 		<Unit filename="include/States/gameState.hpp" />
 		<Unit filename="include/States/stateIntroSFML.hpp" />
+		<Unit filename="include/States/stateMainGame.hpp" />
 		<Unit filename="include/States/stateMainMenu.hpp" />
 		<Unit filename="include/engine.hpp" />
+		<Unit filename="include/field.hpp" />
 		<Unit filename="include/game.hpp" />
+		<Unit filename="include/gameSprites.hpp" />
 		<Unit filename="include/menuButton.hpp" />
+		<Unit filename="include/spriteType.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Field.cpp" />
 		<Unit filename="src/Managment/color.cpp" />
 		<Unit filename="src/Managment/font.cpp" />
 		<Unit filename="src/Managment/resourceManager.cpp" />
 		<Unit filename="src/Managment/sound.cpp" />
 		<Unit filename="src/Managment/texture.cpp" />
 		<Unit filename="src/States/stateIntroSFML.cpp" />
+		<Unit filename="src/States/stateMainGame.cpp" />
 		<Unit filename="src/States/stateMainMenu.cpp" />
 		<Unit filename="src/engine.cpp" />
 		<Unit filename="src/game.cpp" />
+		<Unit filename="src/gameSprites.cpp" />
 		<Unit filename="src/menuButton.cpp" />
 		<Extensions>
 			<code_completion />

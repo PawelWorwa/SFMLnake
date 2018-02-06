@@ -35,9 +35,10 @@ void StateMainMenu::update( void ) {
     sf::RenderWindow &window = game.getWindow();
 
     if( playButton.isClicked( window ) ) {
-        //std::unique_ptr< GameState > playGameState ( new StatePlayGame( game ) );
+        //std::unique_ptr< GameState > playGameState ( new StateMainGame( game ) );
         //nextState = std::move( playGameState );
-       // stopState();
+        nextState = std::unique_ptr< GameState > ( new StateMainGame( game ) );
+        stopState();
     }
 
     if( trophiesButton.isClicked( window ) ) {

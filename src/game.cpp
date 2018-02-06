@@ -36,6 +36,7 @@ void Game::loadTextures( void ) {
     manager.addTexture( Texture::SFML_LOGO );
     manager.addTexture( Texture::MAIN_MENU_BACKGROUND );
     manager.addTexture( Texture::MAIN_MENU_BUTTONS );
+    manager.addTexture( Texture::MAIN_GAME_TEXTURES );
 }
 
 void Game::loadFonts( void ) {
