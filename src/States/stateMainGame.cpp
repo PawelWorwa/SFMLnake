@@ -3,8 +3,12 @@
 StateMainGame::StateMainGame( Game &game )
     :   game( game ),
         sprites( getGameTextures() ),
-        field( sprites, getWindowSize() )
+        field( sf::Vector2f( FIELD_ROWS, FIELD_CELLS ), sprites ),
+        snake( sprites )
 {
+    sprites.resizeSprites( getWindowSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ) );
+    field.create();
+    snake.create();
 }
 
 StateMainGame::~StateMainGame() {
@@ -17,6 +21,7 @@ std::unique_ptr< GameState > StateMainGame::getNextState( void ) {
 void StateMainGame::draw( void ) {
    sf::RenderWindow &window = game.getWindow();
    field.draw( window );
+   snake.draw( window );
 }
 
 void StateMainGame::handleInput( void ) {

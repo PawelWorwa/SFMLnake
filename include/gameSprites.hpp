@@ -19,13 +19,14 @@ class GameSprites {
 
         void addSprite( SpriteType type, sf::IntRect intRect );
         void createSprites( void );
+        sf::Vector2f getSpriteDimensions( void );
 
     public:
         explicit GameSprites( sf::Texture& texture );
         virtual ~GameSprites();
 
         sf::Sprite getSprite( SpriteType type );
-        sf::Vector2f getSpriteSize( void );
+        void resizeSprites( sf::Vector2f resolution, sf::Vector2f gameFieldSize );
 };
 
 #endif // GAMESPRITES_H

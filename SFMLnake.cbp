@@ -69,11 +69,13 @@
 		<Unit filename="include/States/stateIntroSFML.hpp" />
 		<Unit filename="include/States/stateMainGame.hpp" />
 		<Unit filename="include/States/stateMainMenu.hpp" />
+		<Unit filename="include/direction.hpp" />
 		<Unit filename="include/engine.hpp" />
 		<Unit filename="include/field.hpp" />
 		<Unit filename="include/game.hpp" />
 		<Unit filename="include/gameSprites.hpp" />
 		<Unit filename="include/menuButton.hpp" />
+		<Unit filename="include/snake.hpp" />
 		<Unit filename="include/spriteType.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Field.cpp" />
@@ -89,6 +91,7 @@
 		<Unit filename="src/game.cpp" />
 		<Unit filename="src/gameSprites.cpp" />
 		<Unit filename="src/menuButton.cpp" />
+		<Unit filename="src/snake.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

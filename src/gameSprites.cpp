@@ -32,8 +32,23 @@ sf::Sprite GameSprites::getSprite( SpriteType type ) {
     return sprites[type];
 }
 
-sf::Vector2f GameSprites::getSpriteSize( void ) {
+sf::Vector2f GameSprites::getSpriteDimensions( void ) {
     float textureWidth  = texture.getSize().x;
     float textureHeight = texture.getSize().y;
-    return sf::Vector2f( textureWidth / TEXTURE_ROWS, textureHeight / TEXTURE_CELLS);
+
+    return sf::Vector2f( textureWidth / TEXTURE_ROWS, textureHeight / TEXTURE_CELLS );
+}
+
+void GameSprites::resizeSprites( sf::Vector2f resolution, sf::Vector2f gameFieldSize ) {
+    sf::Vector2f spriteDimensions = getSpriteDimensions();
+    float targetWidth  = resolution.x / gameFieldSize.x;
+    float targetHeight = resolution.y / gameFieldSize.y;
+    float xScale = targetWidth  * 100.0f / spriteDimensions.x;
+    float yScale = targetHeight * 100.0f / spriteDimensions.y;
+
+    for( size_t i = 0; i < NR_OF_SPRITES; ++i ) {
+        sf::Sprite sprite = sprites[i];
+        sprite.setScale( xScale / 100.0f, yScale / 100.0f );
+        sprites[i] = sprite;
+    }
 }

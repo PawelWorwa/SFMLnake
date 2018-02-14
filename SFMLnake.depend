@@ -545,3 +545,145 @@
 1517949976 source:c:\users\pawe³ worwa\desktop\sfmlnake\src\field.cpp
 	"field.hpp"
 
+1517344606 source:c:\00_sfml\projects\sfmlnake\main.cpp
+	"include/engine.hpp"
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\engine.hpp
+	<memory>
+	<stack>
+	<SFML/Graphics/RenderWindow.hpp>
+	"../include/game.hpp"
+	"../include/States/gameState.hpp"
+	"../include/States/stateIntroSFML.hpp"
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\game.hpp
+	<SFML/Graphics/RenderWindow.hpp>
+	"../include/Managment/font.hpp"
+	"../include/Managment/resourceManager.hpp"
+	"../include/Managment/sound.hpp"
+	"../include/Managment/texture.hpp"
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\managment\font.hpp
+	<string>
+
+1518551340 c:\00_sfml\projects\sfmlnake\include\managment\resourcemanager.hpp
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Texture.hpp>
+	"../../include/Managment/color.hpp"
+	<map>
+	<string>
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\managment\color.hpp
+	<SFML/Graphics/Color.hpp>
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\managment\sound.hpp
+	<string>
+
+1517594389 c:\00_sfml\projects\sfmlnake\include\managment\texture.hpp
+	<string>
+
+1517344606 c:\00_sfml\projects\sfmlnake\include\states\gamestate.hpp
+	<memory>
+
+1517516094 c:\00_sfml\projects\sfmlnake\include\states\stateintrosfml.hpp
+	<SFML/Audio/Sound.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/Window/Event.hpp>
+	"../../include/States/gameState.hpp"
+	"../../include/States/stateMainMenu.hpp"
+	"../../include/Managment/Color.hpp"
+	"../../include/Managment/Sound.hpp"
+	"../../include/Managment/Texture.hpp"
+	"../../include/game.hpp"
+
+1517521293 c:\00_sfml\projects\sfmlnake\include\states\statemainmenu.hpp
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Window/Event.hpp>
+	"../../include/States/buttonState.hpp"
+	"../../include/States/gameState.hpp"
+	"../../include/States/stateMainGame.hpp"
+	"../../include/game.hpp"
+	"../../include/menuButton.hpp"
+
+1517516094 c:\00_sfml\projects\sfmlnake\include\states\buttonstate.hpp
+
+1518637080 c:\00_sfml\projects\sfmlnake\include\states\statemaingame.hpp
+	<SFML/Window/Event.hpp>
+	"../../include/States/gameState.hpp"
+	"../../include/game.hpp"
+	"../../include/gameSprites.hpp"
+	"field.hpp"
+	"snake.hpp"
+
+1518632456 c:\00_sfml\projects\sfmlnake\include\gamesprites.hpp
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+	"spriteType.hpp"
+	<array>
+
+1517518293 c:\00_sfml\projects\sfmlnake\include\spritetype.hpp
+
+1518637425 c:\00_sfml\projects\sfmlnake\include\field.hpp
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	"gameSprites.hpp"
+
+1517516094 c:\00_sfml\projects\sfmlnake\include\menubutton.hpp
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/Window/Mouse.hpp>
+	"../include/States/buttonState.hpp"
+	<array>
+
+1517344606 source:c:\00_sfml\projects\sfmlnake\src\engine.cpp
+	"../include/engine.hpp"
+
+1517594416 source:c:\00_sfml\projects\sfmlnake\src\game.cpp
+	"../include/game.hpp"
+
+1518636774 source:c:\00_sfml\projects\sfmlnake\src\gamesprites.cpp
+	"gameSprites.hpp"
+
+1517344606 source:c:\00_sfml\projects\sfmlnake\src\managment\color.cpp
+	"../../include/Managment/color.hpp"
+
+1517344606 source:c:\00_sfml\projects\sfmlnake\src\managment\font.cpp
+	"../../include/Managment/font.hpp"
+
+1518551337 source:c:\00_sfml\projects\sfmlnake\src\managment\resourcemanager.cpp
+	"../../include/Managment/resourceManager.hpp"
+
+1517344606 source:c:\00_sfml\projects\sfmlnake\src\managment\sound.cpp
+	"../../include/Managment/sound.hpp"
+
+1517593176 source:c:\00_sfml\projects\sfmlnake\src\managment\texture.cpp
+	"../../include/Managment/texture.hpp"
+
+1517516094 source:c:\00_sfml\projects\sfmlnake\src\menubutton.cpp
+	"../include/menuButton.hpp"
+
+1518551388 source:c:\00_sfml\projects\sfmlnake\src\states\stateintrosfml.cpp
+	"../../include/States/stateIntroSFML.hpp"
+
+1518207406 source:c:\00_sfml\projects\sfmlnake\src\states\statemainmenu.cpp
+	"../../include/States/stateMainMenu.hpp"
+
+1518637434 source:c:\00_sfml\projects\sfmlnake\src\field.cpp
+	"field.hpp"
+
+1518637124 source:c:\00_sfml\projects\sfmlnake\src\states\statemaingame.cpp
+	"stateMainGame.hpp"
+
+1518632523 source:c:\00_sfml\projects\sfmlnake\src\snake.cpp
+	"snake.hpp"
+
+1518637359 c:\00_sfml\projects\sfmlnake\include\snake.hpp
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	"gameSprites.hpp"
+

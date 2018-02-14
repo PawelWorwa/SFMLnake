@@ -8,21 +8,18 @@
 
 class Field {
     private:
-        static const int FIELD_ROWS  = 10;
-        static const int FIELD_CELLS = 10;
-
-        GameSprites& sprites;
         sf::Vector2f fieldSize;
+        GameSprites& sprites;
         std::vector< sf::Sprite > field;
 
-        void createField( sf::Vector2f fieldSize );
         void addSprite( int row, int cell, SpriteType type );
 
     public:
-        explicit Field( GameSprites& sprites, sf::Vector2f fieldSize );
+        explicit Field( sf::Vector2f fieldSize, GameSprites& sprites );
         virtual ~Field();
 
         void draw( sf::RenderWindow& window );
+        void create( void );
 };
 
 #endif // FIELD_H

@@ -79,14 +79,14 @@ void StateIntroSFML::prepareAnimation( void ) {
 void StateIntroSFML::createLogoSprite( void ) {
     ResourceManager& manager = game.getResManager();
     sf::Texture& logoTxr = manager.getTexture( Texture::SFML_LOGO );
-    logoSpr.setTexture(logoTxr);
+    logoSpr.setTexture( logoTxr );
 
     int width = logoTxr.getSize().x;
     int height = logoTxr.getSize().y;
     logoSpr.setTextureRect( sf::IntRect( 0, 0, width, height ) );
 }
 
-void StateIntroSFML::centerLogoOrigin(void) {
+void StateIntroSFML::centerLogoOrigin( void ) {
     int xCenter = logoSpr.getGlobalBounds().width / 2;
     int yCenter = logoSpr.getGlobalBounds().height / 2;
     logoSpr.setOrigin( xCenter, yCenter );

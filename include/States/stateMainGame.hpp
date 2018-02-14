@@ -8,12 +8,17 @@
 
 #include "../../include/gameSprites.hpp"
 #include "field.hpp"
+#include "snake.hpp"
 
 class StateMainGame : public GameState {
     private:
+        static const int FIELD_ROWS  = 10;
+        static const int FIELD_CELLS = 10;
+
         Game &game;
         GameSprites sprites;
         Field field;
+        Snake snake;
 
         sf::Texture& getGameTextures( void );
         sf::Vector2f getWindowSize( void );
