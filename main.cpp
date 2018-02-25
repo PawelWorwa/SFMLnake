@@ -1,6 +1,8 @@
-#include "include/engine.hpp"
+#include "sources/engine.hpp"
 
 int main() {
+    std::srand(( unsigned int ) time( nullptr ));
+
     Engine gameEngine;
     gameEngine.startGame();
 
