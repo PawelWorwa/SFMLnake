@@ -9,8 +9,7 @@ My **ToDo** checklist - thinks I want to include as:
 - [x] create simple game engine;	
 - [x] create resources manager (handle "heavy" objects such as textures);		
 - [x] implement Game Loop pattern;	
-- [x] implement State pattern;	
-- [] implement Command pattern (if it's not an overkill);		
+- [x] implement State pattern;		
 - [] implement Observer pattern (achievements because... why not);	
 - [] learn cmake;	
 - [] apply open sonar;	
@@ -21,7 +20,7 @@ My **ToDo** checklist - thinks I want to include as:
 - [x] Intro state		
 - [x] Main menu state		
 - [x] Main game state - field		
-- [] Main game state - snake		
+- [x] Main game state - snake		
 - [] Main game state - loose condition		
 - [] Main game state - win condition		
 - [] Trophies state - achievements		
