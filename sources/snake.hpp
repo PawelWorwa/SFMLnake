@@ -9,7 +9,7 @@
 
 class Snake {
     private:
-        unsigned int HEAD_ELEMENT = parts.size();
+        unsigned int headElementIndex;
 
         GameSprites& sprites;
         std::vector< sf::Sprite > parts;
@@ -39,7 +39,8 @@ class Snake {
         sf::FloatRect getHeadElementFloatRect();
         void grow();
 
-        void moveBody();
+
+        bool stopGrowth = false;
 };
 
 #endif // SNAKE_H

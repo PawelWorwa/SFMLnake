@@ -74,8 +74,6 @@ void StateMainGame::update() {
         clock.restart();
         snake.setMoved( false );
     }
-
-    snake.moveBody();
 }
 
 void StateMainGame::stopState() {
