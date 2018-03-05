@@ -4,11 +4,18 @@ StateMainGame::StateMainGame( Game& game )
         : game( game ),
           sprites( getGameTextures()),
           field( sf::Vector2f( FIELD_ROWS, FIELD_CELLS ), sprites ),
+          fruit( sprites ),
           snake( sprites )
 {
+    eatenFruits = 0;
+
     sprites.resizeSprites( getWindowSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create();
-    snake.create();
+
+    fruit.create();
+    fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
+
+    snake.create( sf::Vector2f( FIELD_ROWS / 2, FIELD_CELLS / 2 ));
 
     clock.restart();
 }
@@ -22,6 +29,7 @@ std::unique_ptr< GameState > StateMainGame::getNextState() {
 void StateMainGame::draw() {
     sf::RenderWindow& window = game.getWindow();
     field.draw( window );
+    fruit.draw( window );
     snake.draw( window );
 }
 
@@ -50,24 +58,24 @@ void StateMainGame::update() {
     int currentTurnDuration = clock.getElapsedTime().asMilliseconds();
     if ( currentTurnDuration <= TURN_DURATION ) {
         if ( !snake.isMoved() ) {
-//            if ( newDir == Direction::LEFT )
-//                snake.setNewDirection( Direction::LEFT );
-//            if ( newDir == Direction::UP )
-//                snake.setNewDirection( Direction::UP );
-//            if ( newDir == Direction::RIGHT )
-//                snake.setNewDirection( Direction::RIGHT );
-//            if ( newDir == Direction::DOWN )
-//                snake.setNewDirection( Direction::DOWN );
-
-
             snake.move();
             snake.setMoved( true );
+        }
+
+        sf::FloatRect snakeHeadFloatRect = snake.getHeadElementFloatRect();
+        bool isFruitEaten = fruit.checkCollision( snakeHeadFloatRect );
+        if ( isFruitEaten ) {
+            eatenFruits++;
+            snake.grow();
+            fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
         }
 
     } else {
         clock.restart();
         snake.setMoved( false );
     }
+
+    snake.moveBody();
 }
 
 void StateMainGame::stopState() {

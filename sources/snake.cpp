@@ -7,25 +7,32 @@ Snake::Snake( GameSprites& sprites )
 {
     currentDirection = randomDirection();
     newDirection = currentDirection;
+
+    HEAD_ELEMENT = 0;
 }
 
 Snake::~Snake() = default;
 
 void Snake::draw( sf::RenderWindow& window ) {
-    sf::Sprite head = parts.at( HEAD_ELEMENT );
-    orientateHead( head );
-
-    window.draw( head );
+    // body
     for ( unsigned int i = 0; i < parts.size() - 1; ++i ) {
         window.draw( parts.at( i ));
     }
+
+
+    // head
+    sf::Sprite head = parts.at( HEAD_ELEMENT );
+    orientateHead( head );
+    window.draw( head );
 }
 
-void Snake::create() {
-    sf::Sprite sprite = sprites.getSprite( SpriteType::SNAKE_FACE );
-    sprite.setPosition( 0, 0 );
+void Snake::create( sf::Vector2f position ) {
+    sf::Sprite headSprite = sprites.getSprite( SpriteType::SNAKE_FACE );
+    float width  = headSprite.getLocalBounds().width  * headSprite.getScale().x;
+    float height = headSprite.getLocalBounds().height * headSprite.getScale().y;
+    headSprite.setPosition( position.x * width, position.y * height );
 
-    parts.push_back( sprite );
+    parts.push_back( headSprite );
 }
 
 void Snake::setNewDirection( Direction direction ) {
@@ -89,7 +96,7 @@ void Snake::orientateHead( sf::Sprite& head ) {
 
 void Snake::move() {
     sf::Sprite head = parts.at( HEAD_ELEMENT );
-    float xMovement = head.getLocalBounds().width * head.getScale().x;
+    float xMovement = head.getLocalBounds().width  * head.getScale().x;
     float yMovement = head.getLocalBounds().height * head.getScale().y;
 
     sf::Vector2f position = head.getPosition();
@@ -117,4 +124,23 @@ bool Snake::isMoved() {
 
 void Snake::setMoved( bool moved ) {
     this->moved = moved;
+}
+
+sf::FloatRect Snake::getHeadElementFloatRect() {
+    sf::Sprite headElement =  parts.at( HEAD_ELEMENT );
+    return headElement.getGlobalBounds();
+}
+
+void Snake::grow() {
+    sf::Sprite head = parts.at( HEAD_ELEMENT );
+    sf::Vector2f lastPosition = head.getPosition();
+
+    sf::Sprite bodyPart = sprites.getSprite( SpriteType::SNAKE_BODY );
+    bodyPart.setPosition( lastPosition.x, lastPosition.y );
+
+    parts.push_back( bodyPart );
+}
+
+void Snake::moveBody() {
+
 }

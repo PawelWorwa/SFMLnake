@@ -44,7 +44,7 @@ add_executable(SFMLnake
         sources/snake.cpp
         LICENSE
         main.cpp
-        README.md)
+        README.md sources/fruit.cpp sources/fruit.hpp)
 
 # Detect and add SFML
 set(SFML_ROOT "C:/00_SFML/SFML")

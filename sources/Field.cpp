@@ -10,23 +10,23 @@ Field::Field( sf::Vector2f fieldSize, GameSprites& sprites )
 Field::~Field() = default;
 
 void Field::create() {
-    for (int i = 0; i < fieldSize.y; ++i) {
-        for (int j = 0; j < fieldSize.x; ++j) {
+    for ( int i = 0; i < fieldSize.y; ++i ) {
+        for ( int j = 0; j < fieldSize.x; ++j ) {
             addSprite( i, j, SpriteType::FIELD );
 
-            if (j == 0) {
+            if ( j == 0 ) {
                 addSprite( i, j, SpriteType::BORDER_UP );
             }
 
-            if (j == fieldSize.x - 1) {
+            if ( j == fieldSize.x - 1 ) {
                 addSprite( i, j, SpriteType::BORDER_DOWN );
             }
 
-            if (i == 0) {
+            if ( i == 0 ) {
                 addSprite( i, j, SpriteType::BORDER_LEFT );
             }
 
-            if (i == fieldSize.y - 1) {
+            if ( i == fieldSize.y - 1 ) {
                 addSprite( i, j, SpriteType::BORDER_RIGHT );
             }
         }
@@ -34,7 +34,7 @@ void Field::create() {
 }
 
 void Field::draw( sf::RenderWindow& window ) {
-    for (unsigned int i = 0; i < field.size(); ++i) {
+    for ( unsigned int i = 0; i < field.size(); ++i ) {
         window.draw( field.at( i ));
     }
 }
