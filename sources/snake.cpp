@@ -2,13 +2,14 @@
 #include "snake.hpp"
 #include <iostream>
 Snake::Snake( GameSprites& sprites )
-        : sprites( sprites ),
-          moved( false )
+        : sprites( sprites )
 {
+    this->headElementIndex = 0;
+    this->moved = false;
+    this->suspendGrowth = false;
+
     currentDirection = randomDirection();
     newDirection = currentDirection;
-
-    headElementIndex = 0;
 }
 
 Snake::~Snake() = default;
@@ -99,13 +100,13 @@ void Snake::move() {
     float yMovement = head.getLocalBounds().height * head.getScale().y;
 
 
-    if(!stopGrowth) {
+    if(!suspendGrowth) {
         for ( unsigned int i = 0; i < parts.size() - 1; ++i ) {
             sf::Vector2f nextPos = parts.at( i + 1 ).getPosition();
             parts.at( i ).setPosition( nextPos );
         }
     }
-    stopGrowth = false;
+    suspendGrowth = false;
 
 
     sf::Vector2f position = head.getPosition();
@@ -152,5 +153,5 @@ void Snake::grow() {
 
     parts.push_back( newPart );
     headElementIndex++;
-    stopGrowth = true;
+    suspendGrowth = true;
 }

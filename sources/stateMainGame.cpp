@@ -5,17 +5,18 @@ StateMainGame::StateMainGame( Game& game )
           sprites( getGameTextures()),
           field( sf::Vector2f( FIELD_ROWS, FIELD_CELLS ), sprites ),
           fruit( sprites ),
-          snake( sprites )
+          snake( sprites ),
+          score( game.getResManager().getTexture( Texture::SCORE_TEXTURES ))
 {
-    eatenFruits = 0;
-
-    sprites.resizeSprites( getWindowSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
+    sprites.resizeSprites( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create();
 
     fruit.create();
     fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
 
     snake.create( sf::Vector2f( FIELD_ROWS / 2, FIELD_CELLS / 2 ));
+
+    score.fitToScreen(  FIELD_OFFSET * game.getWindow().getSize().y / 100.0f );
 
     clock.restart();
 }
@@ -31,6 +32,7 @@ void StateMainGame::draw() {
     field.draw( window );
     fruit.draw( window );
     snake.draw( window );
+    score.draw( window );
 }
 
 void StateMainGame::handleInput() {
@@ -57,7 +59,7 @@ void StateMainGame::handleInput() {
 void StateMainGame::update() {
     int currentTurnDuration = clock.getElapsedTime().asMilliseconds();
     if ( currentTurnDuration <= TURN_DURATION ) {
-        if ( !snake.isMoved() ) {
+        if ( !snake.isMoved()) {
             snake.move();
             snake.setMoved( true );
         }
@@ -65,9 +67,9 @@ void StateMainGame::update() {
         sf::FloatRect snakeHeadFloatRect = snake.getHeadElementFloatRect();
         bool isFruitEaten = fruit.checkCollision( snakeHeadFloatRect );
         if ( isFruitEaten ) {
-            eatenFruits++;
             snake.grow();
             fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
+            score.increaseScore();
         }
 
     } else {
@@ -83,12 +85,13 @@ sf::Texture& StateMainGame::getGameTextures() {
     return game.getResManager().getTexture( Texture::MAIN_GAME_TEXTURES );
 }
 
-sf::Vector2f StateMainGame::getWindowSize() {
+sf::Vector2f StateMainGame::getPlayableFieldSize() {
     sf::RenderWindow& window = game.getWindow();
     float width = window.getSize().x;
     float height = window.getSize().y;
+    float offset = FIELD_OFFSET * height / 100.0f;
 
-    return { width, height };
+    return { width, height - offset };
 }
 
 void StateMainGame::handlePlayerInput() {

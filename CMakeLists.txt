@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.9)
+
 project(SFMLnake)
+set (SFMLnake_VERSION_MAJOR 0)
+set (SFMLnake_VERSION_MINOR 5)
+set (SFMLnake_VERSION_PATCH 1)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -44,12 +48,13 @@ add_executable(SFMLnake
         sources/snake.cpp
         LICENSE
         main.cpp
-        README.md sources/fruit.cpp sources/fruit.hpp)
+        README.md sources/fruit.cpp sources/fruit.hpp score.cpp score.hpp)
 
 # Detect and add SFML
-set(SFML_ROOT "C:/00_SFML/SFML")
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+set(SFML_ROOT "${CMAKE_SOURCE_DIR}/dependencies/SFML")
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/dependencies/SFML/cmake/Modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 2 REQUIRED audio network graphics window system)
+
 if(SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(SFMLnake ${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

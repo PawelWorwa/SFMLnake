@@ -37,6 +37,7 @@ void Game::loadTextures() {
     manager.addTexture( Texture::MAIN_MENU_BACKGROUND );
     manager.addTexture( Texture::MAIN_MENU_BUTTONS );
     manager.addTexture( Texture::MAIN_GAME_TEXTURES );
+    manager.addTexture( Texture::SCORE_TEXTURES );
 }
 
 void Game::loadFonts() {

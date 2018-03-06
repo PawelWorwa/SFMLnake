@@ -10,25 +10,25 @@
 #include "field.hpp"
 #include "snake.hpp"
 #include "fruit.hpp"
+#include "../score.hpp"
 
 class StateMainGame : public GameState {
     private:
         static const int FIELD_ROWS  = 10;
         static const int FIELD_CELLS = 10;
-
         static const int TURN_DURATION = 500; //ms
+        static const int FIELD_OFFSET  = 10; //%
 
         Game& game;
         GameSprites sprites;
         Field field;
         Fruit fruit;
         Snake snake;
+        Score score;
 
         sf::Clock clock;
         sf::Texture& getGameTextures();
-        sf::Vector2f getWindowSize();
-
-        unsigned int eatenFruits;
+        sf::Vector2f getPlayableFieldSize();
 
         void handlePlayerInput();
 

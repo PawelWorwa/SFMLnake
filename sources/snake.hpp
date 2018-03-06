@@ -10,10 +10,11 @@
 class Snake {
     private:
         unsigned int headElementIndex;
+        bool moved;
+        bool suspendGrowth;
 
         GameSprites& sprites;
         std::vector< sf::Sprite > parts;
-        bool moved;
         Direction currentDirection;
         Direction newDirection;
 
@@ -38,9 +39,6 @@ class Snake {
 
         sf::FloatRect getHeadElementFloatRect();
         void grow();
-
-
-        bool stopGrowth = false;
 };
 
 #endif // SNAKE_H
