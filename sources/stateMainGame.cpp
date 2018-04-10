@@ -3,13 +3,14 @@
 StateMainGame::StateMainGame( Game& game )
         : game( game ),
           sprites( getGameTextures()),
-          field( sf::Vector2f( FIELD_ROWS, FIELD_CELLS ), sprites ),
+          field( sf::Vector2u(game.getWindow().getSize()), sprites ),
           fruit( sprites ),
           snake( sprites ),
           score( game.getResManager().getTexture( Texture::SCORE_TEXTURES ))
 {
     sprites.resizeSprites( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
-    field.create();
+
+    field.create( sf::Vector2i( FIELD_ROWS, FIELD_CELLS ));
 
     fruit.create();
     fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
@@ -65,7 +66,7 @@ void StateMainGame::update() {
         }
 
         sf::FloatRect snakeHeadFloatRect = snake.getHeadElementFloatRect();
-        bool isFruitEaten = fruit.checkCollision( snakeHeadFloatRect );
+        bool isFruitEaten = fruit.isColliding( snakeHeadFloatRect );
         if ( isFruitEaten ) {
             snake.grow();
             fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));

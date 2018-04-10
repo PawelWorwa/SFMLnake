@@ -1,13 +1,11 @@
 #include "game.hpp"
 
-Game::Game() : exitGame( false ) {
-    window.create( sf::VideoMode( WIDTH, HEIGHT ), "SFMLnake" );
-    window.setFramerateLimit( FPS );
-    window.setKeyRepeatEnabled( false );
+Game::Game() {
+    this->exitGame = false;
 
+    createWindow();
     loadSounds();
     loadTextures();
-    loadFonts();
 }
 
 Game::~Game() = default;
@@ -40,6 +38,8 @@ void Game::loadTextures() {
     manager.addTexture( Texture::SCORE_TEXTURES );
 }
 
-void Game::loadFonts() {
-    manager.addFont( Font::VERDANA );
+void Game::createWindow() {
+    window.create( sf::VideoMode( WIDTH, HEIGHT ), "SFMLnake" );
+    window.setFramerateLimit( FPS );
+    window.setKeyRepeatEnabled( false );
 }

@@ -51,7 +51,7 @@ void GameSprites::resizeSprites( sf::Vector2f resolution, sf::Vector2f gameField
 
 sf::Vector2f GameSprites::getResizeSpriteScale( sf::Vector2f resolution, sf::Vector2f gameFieldSize ) {
     sf::Vector2f spriteDimensions = getSpriteDimensions();
-    float targetWidth = resolution.x / gameFieldSize.x;
+    float targetWidth  = resolution.x / gameFieldSize.x;
     float targetHeight = resolution.y / gameFieldSize.y;
     float xScale = targetWidth * 100.0f / spriteDimensions.x;
     float yScale = targetHeight * 100.0f / spriteDimensions.y;

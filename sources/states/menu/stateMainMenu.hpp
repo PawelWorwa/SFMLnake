@@ -6,16 +6,16 @@
 #include <SFML/Window/Event.hpp>
 
 #include "buttonState.hpp"
-#include "gameState.hpp"
-#include "stateMainGame.hpp"
-#include "game.hpp"
+#include "../gameState.hpp"
+#include "../../stateMainGame.hpp"
+#include "../../engine/game.hpp"
 #include "menuButton.hpp"
 
 class StateMainMenu : public GameState {
     private:
-        static const int BUTTON_TEXTURE_ROWS = 2;
+        static const int BUTTON_TEXTURE_ROWS  = 2;
         static const int BUTTON_TEXTURE_CELLS = 3;
-        static const int BUTTON_OFFSET = 10; // %
+        static const int BUTTON_LOCATION_OFFSET = 10; //%
 
         sf::Sprite background;
         Game& game;
@@ -26,7 +26,7 @@ class StateMainMenu : public GameState {
 
         void createButtons();
         sf::Texture& getButtonsTexture();
-        void prepareBackgorund();
+        void prepareBackground();
 
     public:
         explicit StateMainMenu( Game& game );

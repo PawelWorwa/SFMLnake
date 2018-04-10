@@ -12,17 +12,15 @@ void StateIntroSFML::handleInput() {
     sf::RenderWindow& window = game.getWindow();
 
     sf::Event event;
-    while (window.pollEvent( event )) {
-        switch (event.type) {
+    while ( window.pollEvent( event )) {
+        switch ( event.type ) {
             case sf::Event::Closed :
                 stopState();
                 window.close();
                 break;
 
             case sf::Event::KeyPressed :
-                if (sf::Keyboard::isKeyPressed( sf::Keyboard::Escape )) {
-                    stopState();
-                }
+                stopState();
                 break;
 
             default :
@@ -33,16 +31,16 @@ void StateIntroSFML::handleInput() {
 
 void StateIntroSFML::update() {
     ResourceManager& manager = game.getResManager();
-    sf::SoundBuffer& buffer = manager.getSoundBuffer( Sound::SFML_INTRO );
+    sf::SoundBuffer& buffer  = manager.getSoundBuffer( Sound::SFML_INTRO );
 
     int maxDuration = buffer.getDuration().asMilliseconds();
     int currentAnimationTime = animationTime.getElapsedTime().asMilliseconds();
-    if (currentAnimationTime >= maxDuration) {
+    if ( currentAnimationTime >= maxDuration ) {
         stopState();
 
     } else {
         sf::Uint8 brightness = logoSpr.getColor().a;
-        if (brightness < 255) {
+        if ( brightness < 255 ) {
             brightness += 3;
         }
 

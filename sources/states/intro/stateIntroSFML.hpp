@@ -6,12 +6,12 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include "gameState.hpp"
-#include "stateMainMenu.hpp"
-#include "color.hpp"
-#include "sound.hpp"
-#include "texture.hpp"
-#include "game.hpp"
+#include "../gameState.hpp"
+#include "../menu/stateMainMenu.hpp"
+#include "../../engine/color.hpp"
+#include "../../engine/sound.hpp"
+#include "../../engine/texture.hpp"
+#include "../../engine/game.hpp"
 
 class StateIntroSFML : public GameState {
     private:

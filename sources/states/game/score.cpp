@@ -1,9 +1,7 @@
 #include <sstream>
 #include "score.hpp"
 
-Score::Score( sf::Texture& texture )
-        : texture( texture )
-{
+Score::Score( sf::Texture& texture ) : texture( texture ) {
     this->scale = 0.0f;
     this->score = 0;
 }
@@ -45,9 +43,8 @@ void Score::drawScoreText( sf::RenderWindow& window ) {
     scoreText.setTextureRect( sf::IntRect( 0, 0, SCORE_TEXT_WIDTH, textureHeight ));
     scoreText.setScale( scale, scale );
 
-    float xPos = 25; // space
     float yPos = window.getSize().y - textureHeight * scale;
-    scoreText.setPosition( xPos, yPos );
+    scoreText.setPosition( SPACE_LENGTH, yPos );
 
     window.draw( scoreText );
 }
@@ -59,9 +56,8 @@ void Score::drawScoreNumbers( sf::RenderWindow& window ) {
         int number = ( int ) character - 48; // in ascii code numbers start from 48
         sf::Sprite sprite = getScoreSprite( number );
 
-        int space = 25;
         int spriteOffset = static_cast<int>(index * sprite.getGlobalBounds().width);
-        float xPos = space + SCORE_TEXT_WIDTH + spriteOffset;
+        float xPos = SPACE_LENGTH + SCORE_TEXT_WIDTH + spriteOffset;
         float yPos = window.getSize().y - texture.getSize().y * scale;
 
         sprite.setPosition( xPos, yPos );

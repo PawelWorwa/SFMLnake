@@ -3,23 +3,21 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-
+#include <SFML/Graphics/RenderTexture.hpp>
 #include "gameSprites.hpp"
 
 class Field {
     private:
-        sf::Vector2f fieldSize;
         GameSprites& sprites;
-        std::vector< sf::Sprite > field;
+        sf::RenderTexture fieldTexture;
 
         void addSprite( int row, int cell, SpriteType type );
 
     public:
-        explicit Field( sf::Vector2f fieldSize, GameSprites& sprites );
+        explicit Field( sf::Vector2u screenDimensions, GameSprites& sprites );
         virtual ~Field();
 
+        void create( sf::Vector2i fieldSize );
         void draw( sf::RenderWindow& window );
-        void create();
 };
-
 #endif // FIELD_H

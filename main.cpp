@@ -1,4 +1,4 @@
-#include "sources/engine.hpp"
+#include "sources/engine/engine.hpp"
 
 int main() {
     std::srand(( unsigned int ) time( nullptr ));

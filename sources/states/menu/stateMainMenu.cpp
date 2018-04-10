@@ -4,9 +4,11 @@ StateMainMenu::StateMainMenu( Game& game )
         : game( game ),
           playButton( getButtonsTexture()),
           trophiesButton( getButtonsTexture()),
-          quitButton( getButtonsTexture()) {
-    nextState = nullptr;
-    prepareBackgorund();
+          quitButton( getButtonsTexture())
+{
+    this->nextState = nullptr;
+
+    prepareBackground();
     createButtons();
 }
 
@@ -31,17 +33,15 @@ void StateMainMenu::handleInput() {
 
 void StateMainMenu::update() {
     sf::RenderWindow& window = game.getWindow();
-
     if (playButton.isClicked( window )) {
         std::unique_ptr< GameState > playGameState ( new StateMainGame( game ) );
         nextState = std::move( playGameState );
         stopState();
-    }
 
-    if (trophiesButton.isClicked( window )) {
-    }
+    } else if (trophiesButton.isClicked( window )) {
+        // todo
 
-    if (quitButton.isClicked( window )) {
+    } else if (quitButton.isClicked( window )) {
         game.setExitGame();
         stopState();
     }
@@ -64,7 +64,7 @@ void StateMainMenu::stopState() {
     this->running = false;
 }
 
-void StateMainMenu::prepareBackgorund() {
+void StateMainMenu::prepareBackground() {
     ResourceManager& manager = game.getResManager();
     sf::Texture& texture = manager.getTexture( Texture::MAIN_MENU_BACKGROUND );
     background.setTexture( texture );
@@ -72,13 +72,12 @@ void StateMainMenu::prepareBackgorund() {
 
 void StateMainMenu::createButtons() {
     sf::Texture& buttonTexture = getButtonsTexture();
-
-    int buttonWidth = buttonTexture.getSize().x / BUTTON_TEXTURE_ROWS;
+    int buttonWidth  = buttonTexture.getSize().x / BUTTON_TEXTURE_ROWS;
     int buttonHeight = buttonTexture.getSize().y / BUTTON_TEXTURE_CELLS;
 
-    int windowWidth = game.getWindow().getSize().x;
+    int windowWidth  = game.getWindow().getSize().x;
     int windowHeight = game.getWindow().getSize().y;
-    int offset = buttonHeight / BUTTON_OFFSET;
+    int offset = buttonHeight / BUTTON_LOCATION_OFFSET;
 
     playButton.setPosition(
             sf::Vector2f( windowWidth / BUTTON_TEXTURE_CELLS - buttonWidth, windowHeight - buttonHeight - offset ));

@@ -3,21 +3,22 @@
 
 #include <SFML/Window/Event.hpp>
 
-#include "gameState.hpp"
-#include "game.hpp"
+#include "states/gameState.hpp"
+#include "engine/game.hpp"
 
-#include "gameSprites.hpp"
-#include "field.hpp"
+#include "states/game/gameSprites.hpp"
 #include "snake.hpp"
-#include "fruit.hpp"
-#include "../score.hpp"
+#include "states/game/fruit.hpp"
+#include "states/game/score.hpp"
+#include "states/game/field.hpp"
 
+// todo refactor this monolith class
 class StateMainGame : public GameState {
     private:
         static const int FIELD_ROWS  = 10;
         static const int FIELD_CELLS = 10;
         static const int TURN_DURATION = 500; //ms
-        static const int FIELD_OFFSET  = 10; //%
+        static const int FIELD_OFFSET  = 10; //% todo change name - its space left for score
 
         Game& game;
         GameSprites sprites;

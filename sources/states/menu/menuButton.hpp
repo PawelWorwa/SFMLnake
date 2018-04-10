@@ -15,9 +15,8 @@ class MenuButton {
     private:
         static const int NR_OF_STATES = 2;
 
-        ButtonState state;
-
         std::array< sf::Sprite, NR_OF_STATES > sprites;
+        ButtonState state;
         sf::Texture& texture;
         sf::Vector2f position;
 

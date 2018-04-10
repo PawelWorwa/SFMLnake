@@ -14,13 +14,10 @@ class Fruit {
         explicit Fruit( GameSprites& sprites );
         virtual ~Fruit();
 
+        bool isColliding( sf::FloatRect floatRect );
         void create();
         void draw( sf::RenderWindow& window );
         void randomizePosition( sf::Vector2f position );
-
-        void eatFruit();
-
-        bool checkCollision( sf::FloatRect floatRect );
 };
 
 #endif //SFMLNAKE_FRUIT_HPP

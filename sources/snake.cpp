@@ -1,4 +1,4 @@
-#include "gameSprites.hpp"
+#include "states/game/gameSprites.hpp"
 #include "snake.hpp"
 #include <iostream>
 Snake::Snake( GameSprites& sprites )
@@ -14,10 +14,22 @@ Snake::Snake( GameSprites& sprites )
 
 Snake::~Snake() = default;
 
+void Snake::setNewDirection( Direction direction ) {
+    this->newDirection = direction;
+}
+
+bool Snake::isMoved() {
+    return moved;
+}
+
+void Snake::setMoved( bool moved ) {
+    this->moved = moved;
+}
+
 void Snake::draw( sf::RenderWindow& window ) {
     // body
-    for ( unsigned int i = 0; i < parts.size(); ++i ) {
-        window.draw( parts.at( i ));
+    for (const auto &snakePart : parts) {
+        window.draw(snakePart);
     }
 
     // head
@@ -33,10 +45,6 @@ void Snake::create( sf::Vector2f position ) {
     headSprite.setPosition( position.x * width, position.y * height );
 
     parts.push_back( headSprite );
-}
-
-void Snake::setNewDirection( Direction direction ) {
-    this->newDirection = direction;
 }
 
 Direction Snake::randomDirection() {
@@ -99,7 +107,6 @@ void Snake::move() {
     float xMovement = head.getLocalBounds().width * head.getScale().x;
     float yMovement = head.getLocalBounds().height * head.getScale().y;
 
-
     if(!suspendGrowth) {
         for ( unsigned int i = 0; i < parts.size() - 1; ++i ) {
             sf::Vector2f nextPos = parts.at( i + 1 ).getPosition();
@@ -126,14 +133,6 @@ void Snake::move() {
 
     head.setPosition( position.x, position.y );
     parts.at( headElementIndex ) = head;
-}
-
-bool Snake::isMoved() {
-    return moved;
-}
-
-void Snake::setMoved( bool moved ) {
-    this->moved = moved;
 }
 
 sf::FloatRect Snake::getHeadElementFloatRect() {

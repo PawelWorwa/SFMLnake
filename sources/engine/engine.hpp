@@ -7,8 +7,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "game.hpp"
-#include "gameState.hpp"
-#include "stateIntroSFML.hpp"
+#include "../states/gameState.hpp"
+#include "../states/intro/stateIntroSFML.hpp"
 
 class Engine {
     private:

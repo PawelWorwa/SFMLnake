@@ -4,8 +4,8 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "gameSprites.hpp"
-#include "direction.hpp"
+#include "states/game/gameSprites.hpp"
+#include "states/game/direction.hpp"
 
 class Snake {
     private:
@@ -40,5 +40,4 @@ class Snake {
         sf::FloatRect getHeadElementFloatRect();
         void grow();
 };
-
 #endif // SNAKE_H
