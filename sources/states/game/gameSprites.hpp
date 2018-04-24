@@ -27,7 +27,7 @@ class GameSprites {
         virtual ~GameSprites();
 
         sf::Sprite getSprite( SpriteType type );
-        void resizeSprites( sf::Vector2f resolution, sf::Vector2f gameFieldSize );
+        void fitToScreen( sf::Vector2f resolution, sf::Vector2f gameFieldSize );
 };
 
 #endif // GAMESPRITES_H

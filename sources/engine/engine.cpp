@@ -1,5 +1,5 @@
 #include "engine.hpp"
-#include <iostream>
+
 Engine::Engine() = default;
 
 Engine::~Engine() {
@@ -21,14 +21,8 @@ void Engine::pushInitialState() {
 void Engine::gameLoop() {
     sf::RenderWindow& window = game.getWindow();
 
-
-    // todo DEBUG
     sf::Clock clock;
     while ( window.isOpen()) {
-        float currentTime = clock.restart().asSeconds();
-        float fps = 1.f / currentTime;
-        std::cout << "FPS: " << fps << '\n';
-
         if ( !states.top()->isRunning()) {
             std::unique_ptr< GameState > nextState = states.top()->getNextState();
             changeState( std::move( nextState ));

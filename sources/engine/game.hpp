@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Audio/Music.hpp>
 
 #include "resourceManager.hpp"
 #include "sound.hpp"
@@ -16,10 +17,14 @@ class Game {
         bool exitGame;
         sf::RenderWindow window;
         ResourceManager manager;
+        sf::Music gameTheme;
 
         void createWindow();
+        void initMusic();
         void loadSounds();
         void loadTextures();
+        void playMusic();
+        void stopMusic();
 
     public:
         Game();
@@ -29,6 +34,7 @@ class Game {
         ResourceManager& getResManager();
         sf::RenderWindow& getWindow();
         bool isExitGame();
+        void handleMusic();
 };
 
 #endif // GAME_H

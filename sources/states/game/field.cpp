@@ -14,8 +14,7 @@ Field::~Field() = default;
 
 void Field::create( sf::Vector2i fieldSize ) {
     for (int i = 0; i < fieldSize.y; ++i) {
-        for (int j = 0; j < fieldSize.x; ++j) {
-            addSprite(i, j, SpriteType::FIELD);
+        for (int j = 0; j < fieldSize.x; ++j) {            addSprite(i, j, SpriteType::FIELD);
 
             if (j == 0) {
                 addSprite(i, j, SpriteType::BORDER_UP);

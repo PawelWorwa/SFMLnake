@@ -40,7 +40,7 @@ sf::Vector2f GameSprites::getSpriteDimensions() {
     return { textureWidth / TEXTURE_ROWS, textureHeight / TEXTURE_CELLS };
 }
 
-void GameSprites::resizeSprites( sf::Vector2f resolution, sf::Vector2f gameFieldSize ) {
+void GameSprites::fitToScreen( sf::Vector2f resolution, sf::Vector2f gameFieldSize ) {
     sf::Vector2f scale = getResizeSpriteScale( resolution, gameFieldSize );
     for ( unsigned int i = 0; i < NR_OF_SPRITES; ++i ) {
         sf::Sprite sprite = sprites[i];

@@ -19,9 +19,6 @@ void Fruit::create() {
     fruit = sprites.getSprite( SpriteType::FRUIT );
 }
 
-bool Fruit::isColliding( sf::FloatRect floatRect ) {
-    sf::FloatRect fruitBoundingBox = fruit.getGlobalBounds();
-    return fruitBoundingBox.intersects( floatRect );
+sf::FloatRect Fruit::getFloatRect () {
+    return fruit.getGlobalBounds();
 }
-
-

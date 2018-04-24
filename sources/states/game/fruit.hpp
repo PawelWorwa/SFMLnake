@@ -7,17 +7,17 @@
 
 class Fruit {
     private:
-        GameSprites& sprites;
+        GameSprites &sprites;
         sf::Sprite fruit;
 
     public:
-        explicit Fruit( GameSprites& sprites );
-        virtual ~Fruit();
+        explicit Fruit ( GameSprites &sprites );
+        virtual ~Fruit ();
 
-        bool isColliding( sf::FloatRect floatRect );
-        void create();
-        void draw( sf::RenderWindow& window );
-        void randomizePosition( sf::Vector2f position );
+        void create ();
+        void draw ( sf::RenderWindow &window );
+        void randomizePosition ( sf::Vector2f position );
+        sf::FloatRect getFloatRect ();
 };
 
 #endif //SFMLNAKE_FRUIT_HPP

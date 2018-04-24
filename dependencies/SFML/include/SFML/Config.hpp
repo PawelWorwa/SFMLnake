@@ -114,7 +114,7 @@
 
 
 ////////////////////////////////////////////////////////////
-// Define helpers to create portable import / export macros for each module
+// Define helpers to createHead portable import / export macros for each module
 ////////////////////////////////////////////////////////////
 #if !defined(SFML_STATIC)
 

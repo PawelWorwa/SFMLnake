@@ -139,12 +139,12 @@ add_executable(SFMLnake
         sources/states/gameState.hpp
         sources/states/game/field.cpp
         sources/states/game/field.hpp
-        sources/snake.cpp
-        sources/snake.hpp
+        sources/states/game/snake.cpp
+        sources/states/game/snake.hpp
         sources/stateMainGame.cpp
         sources/stateMainGame.hpp
         main.cpp
-        README.md)
+        README.md Collision.cpp Collision.hpp)
 
 # Detect and add SFML
 set(SFML_ROOT "${CMAKE_SOURCE_DIR}/dependencies/SFML")

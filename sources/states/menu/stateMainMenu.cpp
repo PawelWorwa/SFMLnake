@@ -1,28 +1,34 @@
 #include "stateMainMenu.hpp"
 
-StateMainMenu::StateMainMenu( Game& game )
+StateMainMenu::StateMainMenu ( Game &game )
         : game( game ),
           playButton( getButtonsTexture()),
           trophiesButton( getButtonsTexture()),
-          quitButton( getButtonsTexture())
-{
-    this->nextState = nullptr;
+          quitButton( getButtonsTexture()) {
+    nextState = nullptr;
 
+    game.handleMusic();
     prepareBackground();
     createButtons();
 }
 
-StateMainMenu::~StateMainMenu() = default;
+StateMainMenu::~StateMainMenu () = default;
 
-void StateMainMenu::handleInput() {
-    sf::RenderWindow& window = game.getWindow();
+void StateMainMenu::handleInput () {
+    sf::RenderWindow &window = game.getWindow();
 
     sf::Event event;
-    while (window.pollEvent( event )) {
-        switch (event.type) {
+    while ( window.pollEvent( event )) {
+        switch ( event.type ) {
             case sf::Event::Closed :
                 stopState();
                 window.close();
+                break;
+
+            case sf::Event::KeyPressed :
+                if ( sf::Keyboard::isKeyPressed( sf::Keyboard::M )) {
+                    game.handleMusic();
+                }
                 break;
 
             default :
@@ -31,24 +37,24 @@ void StateMainMenu::handleInput() {
     }
 }
 
-void StateMainMenu::update() {
-    sf::RenderWindow& window = game.getWindow();
-    if (playButton.isClicked( window )) {
-        std::unique_ptr< GameState > playGameState ( new StateMainGame( game ) );
+void StateMainMenu::update () {
+    sf::RenderWindow &window = game.getWindow();
+    if ( playButton.isClicked( window )) {
+        std::unique_ptr< GameState > playGameState( new StateMainGame( game ));
         nextState = std::move( playGameState );
         stopState();
 
-    } else if (trophiesButton.isClicked( window )) {
+    } else if ( trophiesButton.isClicked( window )) {
         // todo
 
-    } else if (quitButton.isClicked( window )) {
+    } else if ( quitButton.isClicked( window )) {
         game.setExitGame();
         stopState();
     }
 }
 
-void StateMainMenu::draw() {
-    sf::RenderWindow& window = game.getWindow();
+void StateMainMenu::draw () {
+    sf::RenderWindow &window = game.getWindow();
     window.draw( background );
 
     playButton.draw( window );
@@ -56,26 +62,26 @@ void StateMainMenu::draw() {
     quitButton.draw( window );
 }
 
-std::unique_ptr< GameState > StateMainMenu::getNextState() {
+std::unique_ptr< GameState > StateMainMenu::getNextState () {
     return std::move( nextState );
 }
 
-void StateMainMenu::stopState() {
+void StateMainMenu::stopState () {
     this->running = false;
 }
 
-void StateMainMenu::prepareBackground() {
-    ResourceManager& manager = game.getResManager();
-    sf::Texture& texture = manager.getTexture( Texture::MAIN_MENU_BACKGROUND );
+void StateMainMenu::prepareBackground () {
+    ResourceManager &manager = game.getResManager();
+    sf::Texture &texture = manager.getTexture( Texture::MAIN_MENU_BACKGROUND );
     background.setTexture( texture );
 }
 
-void StateMainMenu::createButtons() {
-    sf::Texture& buttonTexture = getButtonsTexture();
-    int buttonWidth  = buttonTexture.getSize().x / BUTTON_TEXTURE_ROWS;
+void StateMainMenu::createButtons () {
+    sf::Texture &buttonTexture = getButtonsTexture();
+    int buttonWidth = buttonTexture.getSize().x / BUTTON_TEXTURE_ROWS;
     int buttonHeight = buttonTexture.getSize().y / BUTTON_TEXTURE_CELLS;
 
-    int windowWidth  = game.getWindow().getSize().x;
+    int windowWidth = game.getWindow().getSize().x;
     int windowHeight = game.getWindow().getSize().y;
     int offset = buttonHeight / BUTTON_LOCATION_OFFSET;
 
@@ -97,7 +103,7 @@ void StateMainMenu::createButtons() {
                           ButtonState::PRESSED );
 }
 
-sf::Texture& StateMainMenu::getButtonsTexture() {
-    ResourceManager& manager = game.getResManager();
+sf::Texture &StateMainMenu::getButtonsTexture () {
+    ResourceManager &manager = game.getResManager();
     return manager.getTexture( Texture::MAIN_MENU_BUTTONS );
 }
