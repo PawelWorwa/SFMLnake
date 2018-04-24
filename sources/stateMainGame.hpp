@@ -43,6 +43,9 @@ class StateMainGame : public GameState {
         void handleFruit();
         void turnRestart();
 
+
+        bool gameOver;
+
     public:
         explicit StateMainGame ( Game &game );
         ~StateMainGame () override;

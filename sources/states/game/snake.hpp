@@ -9,7 +9,6 @@
 
 class Snake {
     private:
-        unsigned int headElementIndex;
         bool moved;
         bool suspendGrowth;
 
@@ -43,6 +42,7 @@ class Snake {
         sf::FloatRect getHeadElementFloatRect ();
         std::vector< sf::Sprite > getParts();
         void grow ();
+        void deleteLastPart();
 };
 
 #endif // SNAKE_H

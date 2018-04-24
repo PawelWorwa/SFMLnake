@@ -2,8 +2,8 @@
 #include "snake.hpp"
 
 Snake::Snake ( GameSprites &sprites )
-        : sprites( sprites ) {
-    headElementIndex = 0;
+        : sprites( sprites )
+{
     moved = false;
     suspendGrowth = false;
 
@@ -26,11 +26,13 @@ void Snake::setMoved ( bool moved ) {
 }
 
 void Snake::draw ( sf::RenderWindow &window ) {
-    for ( const auto &bodyPart : parts ) {
+    for ( const auto &bodyPart : parts )
+    {
         window.draw( bodyPart );
     }
 
-    sf::Sprite head = parts.at( headElementIndex );
+    unsigned int headIndex = parts.size() - 1;
+    sf::Sprite head = parts.at( headIndex );
     orientateHead( head );
     window.draw( head );
 }
@@ -77,7 +79,8 @@ void Snake::orientateHeadLeft ( sf::Sprite &head ) {
 }
 
 void Snake::orientateHead ( sf::Sprite &head ) {
-    switch ( currentDirection ) {
+    switch ( currentDirection )
+    {
         case Direction::RIGHT :
             orientateHeadRight( head );
             break;
@@ -104,14 +107,17 @@ void Snake::move () {
     currentDirection = newDirection;
     sf::Vector2f position = getNewHeadPosition();
 
-    sf::Sprite head = parts.at( headElementIndex );
+    unsigned int headIndex = parts.size() - 1;
+    sf::Sprite head = parts.at( headIndex );
     head.setPosition( position.x, position.y );
-    parts.at( headElementIndex ) = head;
+    parts.at( headIndex ) = head;
 }
 
 void Snake::moveBodyParts () {
-    if ( !suspendGrowth ) {
-        for ( unsigned int i = 0; i < parts.size() - 1; ++i ) {
+    if ( !suspendGrowth )
+    {
+        for ( unsigned int i = 0; i < parts.size() - 1; ++i )
+        {
             sf::Vector2f nextPos = parts.at( i + 1 ).getPosition();
             parts.at( i ).setPosition( nextPos );
         }
@@ -120,21 +126,26 @@ void Snake::moveBodyParts () {
 }
 
 sf::Vector2f Snake::getNewHeadPosition () {
-    sf::Sprite head = parts.at( headElementIndex );
+    unsigned int headIndex = parts.size() - 1;
+    sf::Sprite head = parts.at( headIndex );
     float xMovement = head.getLocalBounds().width * head.getScale().x;
     float yMovement = head.getLocalBounds().height * head.getScale().y;
 
     sf::Vector2f position = head.getPosition();
-    if ( currentDirection == Direction::RIGHT ) {
+    if ( currentDirection == Direction::RIGHT )
+    {
         position.x += xMovement;
 
-    } else if ( currentDirection == Direction::DOWN ) {
+    } else if ( currentDirection == Direction::DOWN )
+    {
         position.y += yMovement;
 
-    } else if ( currentDirection == Direction::LEFT ) {
+    } else if ( currentDirection == Direction::LEFT )
+    {
         position.x -= xMovement;
 
-    } else if ( currentDirection == Direction::UP ) {
+    } else if ( currentDirection == Direction::UP )
+    {
         position.y -= yMovement;
     }
 
@@ -142,22 +153,23 @@ sf::Vector2f Snake::getNewHeadPosition () {
 }
 
 sf::FloatRect Snake::getHeadElementFloatRect () {
-    sf::Sprite headElement = parts.at( headElementIndex );
+    unsigned int headIndex = parts.size() - 1;
+    sf::Sprite headElement = parts.at( headIndex );
     return headElement.getGlobalBounds();
 }
 
 void Snake::grow () {
-    sf::Sprite lastPart = parts.at( headElementIndex );
+    unsigned int headIndex = parts.size() - 1;
+    sf::Sprite lastPart = parts.at( headIndex );
     sf::Vector2f lastPosition = lastPart.getPosition();
     lastPart = sprites.getSprite( SpriteType::SNAKE_BODY );
     lastPart.setPosition( lastPosition );
-    parts.at( headElementIndex ) = lastPart;
+    parts.at( headIndex ) = lastPart;
 
     sf::Sprite newPart = sprites.getSprite( SpriteType::SNAKE_FACE );
     newPart.setPosition( lastPosition.x, lastPosition.y );
 
     parts.push_back( newPart );
-    headElementIndex++;
     suspendGrowth = true;
 }
 
@@ -167,4 +179,11 @@ std::vector< sf::Sprite > Snake::getParts () {
 
 bool Snake::isSuspendGrowth () const {
     return suspendGrowth;
+}
+
+void Snake::deleteLastPart () {
+    if ( parts.size() > 1 )
+    {
+        parts.erase( parts.begin());
+    }
 }

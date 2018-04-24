@@ -6,7 +6,8 @@ StateMainGame::StateMainGame ( Game &game )
           field( sf::Vector2u( game.getWindow().getSize()), sprites ),
           fruit( sprites ),
           snake( sprites ),
-          score( game.getResManager().getTexture( Texture::SCORE_TEXTURES )) {
+          score( game.getResManager().getTexture( Texture::SCORE_TEXTURES ))
+{
     sprites.fitToScreen( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create( sf::Vector2i( FIELD_ROWS, FIELD_CELLS ));
     fruit.create();
@@ -19,6 +20,9 @@ StateMainGame::StateMainGame ( Game &game )
     gameOverPlayed = false;
     eatSound.setBuffer( game.getResManager().getSoundBuffer( Sound::EAT ));
     endSound.setBuffer( game.getResManager().getSoundBuffer( Sound::END ));
+
+
+    gameOver = false;
 }
 
 StateMainGame::~StateMainGame () = default;
@@ -57,7 +61,11 @@ void StateMainGame::handleInput () {
 }
 
 void StateMainGame::update () {
-    if ( !isGameOver()) {
+    if (!gameOver && isGameOver()) {
+        gameOver = true;
+    }
+
+    if ( !gameOver) {
         int turnDuration = clock.getElapsedTime().asMilliseconds();
         if ( turnDuration <= TURN_DURATION_MS ) {
             handleSnakeMovement();
@@ -72,14 +80,11 @@ void StateMainGame::update () {
         if ( !gameOverPlayed ) {
             endSound.play();
             gameOverPlayed = true;
-
-            snake.deleteLastPart();
-
         }
 
+        snake.deleteLastPart();
         /**
          *  todo - game over state:
-         *  - shrink snake
          *  - game over title
          */
     }
