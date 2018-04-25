@@ -2,8 +2,7 @@
 #include "snake.hpp"
 
 Snake::Snake ( GameSprites &sprites )
-        : sprites( sprites )
-{
+        : sprites( sprites ) {
     moved = false;
     suspendGrowth = false;
 
@@ -26,8 +25,7 @@ void Snake::setMoved ( bool moved ) {
 }
 
 void Snake::draw ( sf::RenderWindow &window ) {
-    for ( const auto &bodyPart : parts )
-    {
+    for ( const auto &bodyPart : parts ) {
         window.draw( bodyPart );
     }
 
@@ -79,8 +77,7 @@ void Snake::orientateHeadLeft ( sf::Sprite &head ) {
 }
 
 void Snake::orientateHead ( sf::Sprite &head ) {
-    switch ( currentDirection )
-    {
+    switch ( currentDirection ) {
         case Direction::RIGHT :
             orientateHeadRight( head );
             break;
@@ -114,14 +111,13 @@ void Snake::move () {
 }
 
 void Snake::moveBodyParts () {
-    if ( !suspendGrowth )
-    {
-        for ( unsigned int i = 0; i < parts.size() - 1; ++i )
-        {
+    if ( !suspendGrowth ) {
+        for ( unsigned int i = 0; i < parts.size() - 1; ++i ) {
             sf::Vector2f nextPos = parts.at( i + 1 ).getPosition();
             parts.at( i ).setPosition( nextPos );
         }
     }
+
     suspendGrowth = false;
 }
 
@@ -132,20 +128,16 @@ sf::Vector2f Snake::getNewHeadPosition () {
     float yMovement = head.getLocalBounds().height * head.getScale().y;
 
     sf::Vector2f position = head.getPosition();
-    if ( currentDirection == Direction::RIGHT )
-    {
+    if ( currentDirection == Direction::RIGHT ) {
         position.x += xMovement;
 
-    } else if ( currentDirection == Direction::DOWN )
-    {
+    } else if ( currentDirection == Direction::DOWN ) {
         position.y += yMovement;
 
-    } else if ( currentDirection == Direction::LEFT )
-    {
+    } else if ( currentDirection == Direction::LEFT ) {
         position.x -= xMovement;
 
-    } else if ( currentDirection == Direction::UP )
-    {
+    } else if ( currentDirection == Direction::UP ) {
         position.y -= yMovement;
     }
 
@@ -181,9 +173,8 @@ bool Snake::isSuspendGrowth () const {
     return suspendGrowth;
 }
 
-void Snake::deleteLastPart () {
-    if ( parts.size() > 1 )
-    {
+void Snake::deleteBodyPart () {
+    if ( parts.size() > 1 ) {
         parts.erase( parts.begin());
     }
 }

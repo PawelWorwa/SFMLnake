@@ -42,7 +42,7 @@ class Snake {
         sf::FloatRect getHeadElementFloatRect ();
         std::vector< sf::Sprite > getParts();
         void grow ();
-        void deleteLastPart();
+        void deleteBodyPart ();
 };
 
 #endif // SNAKE_H

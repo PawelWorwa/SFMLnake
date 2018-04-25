@@ -7,7 +7,7 @@ My **ToDo** checklist - thinks I want to include as:
 
 #### Part of learning process
 - [x] createHead simple game engine;	
-- [x] createHead resources manager (handle "heavy" objects such as textures);		
+- [x] createHead resources textureManager (handle "heavy" objects such as textures);		
 - [x] implement Game Loop pattern;	
 - [x] implement State pattern;		
 - [**REMOVED**] implement Observer pattern (achievements because... why not);	

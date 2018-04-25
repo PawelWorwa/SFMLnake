@@ -5,10 +5,10 @@
 
 class GameState {
     public:
-        GameState() : running( true ) {};
+        GameState() : stateRunning( true ) {};
         virtual ~GameState() = default;
 
-        bool isRunning() { return running; };
+        bool isStateRunning() { return stateRunning; };
 
         virtual std::unique_ptr< GameState > getNextState() = 0;
         virtual void stopState() = 0;
@@ -17,7 +17,7 @@ class GameState {
         virtual void draw() = 0;
 
     protected:
-        bool running;
+        bool stateRunning;
 };
 
 #endif // GAMESTATE_H

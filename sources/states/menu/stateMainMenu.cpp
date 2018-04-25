@@ -1,20 +1,22 @@
 #include "stateMainMenu.hpp"
 
-StateMainMenu::StateMainMenu ( Game &game )
+StateMainMenu::StateMainMenu( Game &game )
         : game( game ),
           playButton( getButtonsTexture()),
           trophiesButton( getButtonsTexture()),
-          quitButton( getButtonsTexture()) {
-    nextState = nullptr;
+          quitButton( getButtonsTexture())
+{
+    this->nextState = nullptr;
 
-    game.handleMusic();
     prepareBackground();
     createButtons();
+
+    game.getSoundManager().playMusic();
 }
 
-StateMainMenu::~StateMainMenu () = default;
+StateMainMenu::~StateMainMenu() = default;
 
-void StateMainMenu::handleInput () {
+void StateMainMenu::handleInput() {
     sf::RenderWindow &window = game.getWindow();
 
     sf::Event event;
@@ -27,7 +29,7 @@ void StateMainMenu::handleInput () {
 
             case sf::Event::KeyPressed :
                 if ( sf::Keyboard::isKeyPressed( sf::Keyboard::M )) {
-                    game.handleMusic();
+                    game.getSoundManager().changeMusicState();
                 }
                 break;
 
@@ -37,7 +39,7 @@ void StateMainMenu::handleInput () {
     }
 }
 
-void StateMainMenu::update () {
+void StateMainMenu::update() {
     sf::RenderWindow &window = game.getWindow();
     if ( playButton.isClicked( window )) {
         std::unique_ptr< GameState > playGameState( new StateMainGame( game ));
@@ -53,7 +55,7 @@ void StateMainMenu::update () {
     }
 }
 
-void StateMainMenu::draw () {
+void StateMainMenu::draw() {
     sf::RenderWindow &window = game.getWindow();
     window.draw( background );
 
@@ -62,21 +64,21 @@ void StateMainMenu::draw () {
     quitButton.draw( window );
 }
 
-std::unique_ptr< GameState > StateMainMenu::getNextState () {
+std::unique_ptr< GameState > StateMainMenu::getNextState() {
     return std::move( nextState );
 }
 
-void StateMainMenu::stopState () {
-    this->running = false;
+void StateMainMenu::stopState() {
+    this->stateRunning = false;
 }
 
-void StateMainMenu::prepareBackground () {
-    ResourceManager &manager = game.getResManager();
+void StateMainMenu::prepareBackground() {
+    TextureManager &manager = game.getTextureManager();
     sf::Texture &texture = manager.getTexture( Texture::MAIN_MENU_BACKGROUND );
     background.setTexture( texture );
 }
 
-void StateMainMenu::createButtons () {
+void StateMainMenu::createButtons() {
     sf::Texture &buttonTexture = getButtonsTexture();
     int buttonWidth = buttonTexture.getSize().x / BUTTON_TEXTURE_ROWS;
     int buttonHeight = buttonTexture.getSize().y / BUTTON_TEXTURE_CELLS;
@@ -103,7 +105,7 @@ void StateMainMenu::createButtons () {
                           ButtonState::PRESSED );
 }
 
-sf::Texture &StateMainMenu::getButtonsTexture () {
-    ResourceManager &manager = game.getResManager();
+sf::Texture &StateMainMenu::getButtonsTexture() {
+    TextureManager &manager = game.getTextureManager();
     return manager.getTexture( Texture::MAIN_MENU_BUTTONS );
 }

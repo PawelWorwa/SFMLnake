@@ -12,7 +12,7 @@
 #include "states/game/fruit.hpp"
 #include "states/game/score.hpp"
 #include "states/game/field.hpp"
-#include "../Collision.hpp"
+#include "states/game/Collision.hpp"
 
 class StateMainGame : public GameState {
     private:
@@ -29,32 +29,29 @@ class StateMainGame : public GameState {
         Score score;
         Collision collision;
 
-        bool gameOverPlayed;
-        sf::Sound eatSound;
-        sf::Sound endSound;
         sf::Clock clock;
-        sf::Texture &getGameTextures ();
-        sf::Vector2f getPlayableFieldSize ();
+        sf::Texture &getGameTextures();
+        sf::Vector2f getPlayableFieldSize();
 
-        void handlePlayerInput ();
-        bool isGameOver();
+        void handlePlayerInput();
+        bool isCollision();
         void handleSnakeMovement();
         void handleMusic();
         void handleFruit();
         void turnRestart();
 
-
+        bool playedEndSound;
         bool gameOver;
 
     public:
-        explicit StateMainGame ( Game &game );
-        ~StateMainGame () override;
+        explicit StateMainGame( Game &game );
+        ~StateMainGame() override;
 
-        std::unique_ptr< GameState > getNextState () override;
-        void draw () override;
-        void handleInput () override;
-        void update () override;
-        void stopState () override;
+        std::unique_ptr< GameState > getNextState() override;
+        void draw() override;
+        void handleInput() override;
+        void update() override;
+        void stopState() override;
 };
 
 #endif // STATEMAINGAME_H

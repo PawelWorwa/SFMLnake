@@ -3,7 +3,7 @@
 
 #include <string>
 
-class Sound {
+class Audio {
     public:
         static const std::string SFML_INTRO;
         static const std::string GAME_THEME;

@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Sprite.hpp>
-#include "sources/states/game/snake.hpp"
+#include "snake.hpp"
 
 class Collision {
     public:

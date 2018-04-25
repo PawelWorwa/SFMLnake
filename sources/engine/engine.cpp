@@ -23,7 +23,7 @@ void Engine::gameLoop() {
 
     sf::Clock clock;
     while ( window.isOpen()) {
-        if ( !states.top()->isRunning()) {
+        if ( !states.top()->isStateRunning()) {
             std::unique_ptr< GameState > nextState = states.top()->getNextState();
             changeState( std::move( nextState ));
         }

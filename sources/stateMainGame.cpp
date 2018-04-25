@@ -1,13 +1,17 @@
 #include "stateMainGame.hpp"
+#include "states/menu/stateMainMenu.hpp"
 
-StateMainGame::StateMainGame ( Game &game )
+StateMainGame::StateMainGame( Game &game )
         : game( game ),
           sprites( getGameTextures()),
           field( sf::Vector2u( game.getWindow().getSize()), sprites ),
           fruit( sprites ),
           snake( sprites ),
-          score( game.getResManager().getTexture( Texture::SCORE_TEXTURES ))
+          score( game.getTextureManager().getTexture( Texture::SCORE_TEXTURES ))
 {
+    this->playedEndSound = false;
+    this->gameOver = false;
+
     sprites.fitToScreen( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create( sf::Vector2i( FIELD_ROWS, FIELD_CELLS ));
     fruit.create();
@@ -16,22 +20,16 @@ StateMainGame::StateMainGame ( Game &game )
     score.fitToScreen( FIELD_OFFSET_PERCENT * game.getWindow().getSize().y / 100.0f );
 
     clock.restart();
-
-    gameOverPlayed = false;
-    eatSound.setBuffer( game.getResManager().getSoundBuffer( Sound::EAT ));
-    endSound.setBuffer( game.getResManager().getSoundBuffer( Sound::END ));
-
-
-    gameOver = false;
 }
 
-StateMainGame::~StateMainGame () = default;
+StateMainGame::~StateMainGame() = default;
 
-std::unique_ptr< GameState > StateMainGame::getNextState () {
-    return nullptr;
+std::unique_ptr< GameState > StateMainGame::getNextState() {
+    std::unique_ptr< GameState > mainMenuState( new StateMainMenu( game ));
+    return std::move( mainMenuState );
 }
 
-void StateMainGame::draw () {
+void StateMainGame::draw() {
     sf::RenderWindow &window = game.getWindow();
     field.draw( window );
     fruit.draw( window );
@@ -39,7 +37,7 @@ void StateMainGame::draw () {
     score.draw( window );
 }
 
-void StateMainGame::handleInput () {
+void StateMainGame::handleInput() {
     sf::RenderWindow &window = game.getWindow();
     sf::Event event;
     while ( window.pollEvent( event )) {
@@ -50,6 +48,10 @@ void StateMainGame::handleInput () {
                 break;
 
             case sf::Event::KeyPressed :
+                if ( gameOver ) {
+                    stopState();
+                }
+
                 handlePlayerInput();
                 handleMusic();
                 break;
@@ -60,12 +62,12 @@ void StateMainGame::handleInput () {
     }
 }
 
-void StateMainGame::update () {
-    if (!gameOver && isGameOver()) {
+void StateMainGame::update() {
+    if ( !gameOver && isCollision()) {
         gameOver = true;
     }
 
-    if ( !gameOver) {
+    if ( !gameOver ) {
         int turnDuration = clock.getElapsedTime().asMilliseconds();
         if ( turnDuration <= TURN_DURATION_MS ) {
             handleSnakeMovement();
@@ -77,12 +79,12 @@ void StateMainGame::update () {
         }
 
     } else {
-        if ( !gameOverPlayed ) {
-            endSound.play();
-            gameOverPlayed = true;
+        if ( !playedEndSound ) {
+            game.getSoundManager().playSound( Audio::END );
+            playedEndSound = true;
         }
 
-        snake.deleteLastPart();
+        snake.deleteBodyPart();
         /**
          *  todo - game over state:
          *  - game over title
@@ -90,14 +92,20 @@ void StateMainGame::update () {
     }
 }
 
-void StateMainGame::stopState () {
+void StateMainGame::stopState() {
+    bool isPlaying = game.getSoundManager().isPlaying( Audio::END );
+    if( isPlaying ) {
+        game.getSoundManager().stopSound( Audio::END );
+    }
+
+    stateRunning = false;
 }
 
-sf::Texture &StateMainGame::getGameTextures () {
-    return game.getResManager().getTexture( Texture::MAIN_GAME_TEXTURES );
+sf::Texture &StateMainGame::getGameTextures() {
+    return game.getTextureManager().getTexture( Texture::MAIN_GAME_TEXTURES );
 }
 
-sf::Vector2f StateMainGame::getPlayableFieldSize () {
+sf::Vector2f StateMainGame::getPlayableFieldSize() {
     sf::RenderWindow &window = game.getWindow();
     float width = window.getSize().x;
     float height = window.getSize().y;
@@ -106,7 +114,7 @@ sf::Vector2f StateMainGame::getPlayableFieldSize () {
     return {width, height - offset};
 }
 
-void StateMainGame::handlePlayerInput () {
+void StateMainGame::handlePlayerInput() {
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left )) {
         snake.setNewDirection( Direction::LEFT );
 
@@ -121,7 +129,7 @@ void StateMainGame::handlePlayerInput () {
     }
 }
 
-bool StateMainGame::isGameOver () {
+bool StateMainGame::isCollision() {
     unsigned int x = game.getWindow().getSize().x;
     unsigned int y = game.getWindow().getSize().y - ( FIELD_OFFSET_PERCENT * game.getWindow().getSize().y / 100 );
     bool isCollisionWithBorders = collision.withBorders( snake.getHeadElementFloatRect(), {x, y} );
@@ -130,31 +138,32 @@ bool StateMainGame::isGameOver () {
     return ( isCollisionWithBorders || isCollisionWithSnake );
 }
 
-void StateMainGame::handleSnakeMovement () {
+void StateMainGame::handleSnakeMovement() {
     if ( !snake.isMoved()) {
         snake.move();
         snake.setMoved( true );
     }
 }
 
-void StateMainGame::handleFruit () {
+void StateMainGame::handleFruit() {
     bool isFruitEaten = collision.withFruit( fruit.getFloatRect(), snake.getHeadElementFloatRect());
     if ( isFruitEaten ) {
         snake.grow();
         // todo - fix random location (collision with snake)
         fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
         score.increaseScore();
-        eatSound.play();
+        game.getSoundManager().playSound( Audio::EAT );
+
     }
 }
 
-void StateMainGame::turnRestart () {
+void StateMainGame::turnRestart() {
     clock.restart();
     snake.setMoved( false );
 }
 
-void StateMainGame::handleMusic () {
+void StateMainGame::handleMusic() {
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::M )) {
-        game.handleMusic();
+        game.getSoundManager().changeMusicState();
     }
 }

@@ -2,39 +2,36 @@
 #define GAME_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Audio/Music.hpp>
 
-#include "resourceManager.hpp"
-#include "sound.hpp"
+#include "textureManager.hpp"
+#include "audio.hpp"
 #include "texture.hpp"
+#include "version.hpp"
 
 class Game {
     private:
-        static const int WIDTH  = 800;
+        static const int WIDTH = 800;
         static const int HEIGHT = 600;
-        static const int FPS    = 30;
+        static const int FPS = 30;
 
         bool exitGame;
         sf::RenderWindow window;
-        ResourceManager manager;
-        sf::Music gameTheme;
+        TextureManager textureManager;
+        SoundManager soundManager;
 
-        void createWindow();
-        void initMusic();
-        void loadSounds();
-        void loadTextures();
-        void playMusic();
-        void stopMusic();
+        void createWindow ();
+        void loadSounds ();
+        void loadTextures ();
 
     public:
-        Game();
-        virtual ~Game();
+        Game ();
+        virtual ~Game ();
 
-        void setExitGame();
-        ResourceManager& getResManager();
-        sf::RenderWindow& getWindow();
-        bool isExitGame();
-        void handleMusic();
+        void setExitGame ();
+        TextureManager &getTextureManager ();
+        SoundManager &getSoundManager ();
+        sf::RenderWindow &getWindow ();
+        bool isExitGame ();
 };
 
 #endif // GAME_H

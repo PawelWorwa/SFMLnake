@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(SFMLnake)
-set (SFMLnake_VERSION_MAJOR 0)
-set (SFMLnake_VERSION_MINOR 5)
-set (SFMLnake_VERSION_PATCH 1)
-
-
 set(CMAKE_CXX_STANDARD 11)
+
+project(SFMLnake VERSION 0.8.1)
+
+configure_file(version.hpp.in version.hpp)
+
+include_directories("${PROJECT_BINARY_DIR}")
 
 add_executable(SFMLnake
         dependencies/SFML/include/SFML/Audio/AlResource.hpp
@@ -115,10 +115,10 @@ add_executable(SFMLnake
         sources/engine/engine.hpp
         sources/engine/game.cpp
         sources/engine/game.hpp
-        sources/engine/resourceManager.cpp
-        sources/engine/resourceManager.hpp
-        sources/engine/sound.cpp
-        sources/engine/sound.hpp
+        sources/engine/textureManager.cpp
+        sources/engine/textureManager.hpp
+        sources/engine/audio.cpp
+        sources/engine/audio.hpp
         sources/engine/texture.cpp
         sources/engine/texture.hpp
         sources/states/game/direction.hpp
@@ -143,15 +143,19 @@ add_executable(SFMLnake
         sources/states/game/snake.hpp
         sources/stateMainGame.cpp
         sources/stateMainGame.hpp
+        sources/engine/soundManager.hpp
+        sources/states/game/Collision.cpp
+        sources/states/game/Collision.hpp
+        sources/engine/soundManager.cpp
         main.cpp
-        README.md Collision.cpp Collision.hpp)
+        README.md)
 
 # Detect and add SFML
 set(SFML_ROOT "${CMAKE_SOURCE_DIR}/dependencies/SFML")
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/dependencies/SFML/cmake/Modules" ${CMAKE_MODULE_PATH})
 find_package(SFML 2 REQUIRED audio network graphics window system)
 
-if(SFML_FOUND)
+if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(SFMLnake ${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
-endif()
+endif ()
