@@ -39,9 +39,11 @@ class StateMainGame : public GameState {
         void handleMusic();
         void handleFruit();
         void turnRestart();
+        void drawTexture( std::string textureName );
 
         bool playedEndSound;
         bool gameOver;
+        bool gameWon;
 
     public:
         explicit StateMainGame( Game &game );

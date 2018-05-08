@@ -38,6 +38,8 @@ void Game::loadTextures () {
     textureManager.addTexture( Texture::MAIN_MENU_BUTTONS );
     textureManager.addTexture( Texture::MAIN_GAME_TEXTURES );
     textureManager.addTexture( Texture::SCORE_TEXTURES );
+    textureManager.addTexture( Texture::GAME_OVER );
+    textureManager.addTexture( Texture::VICTORY );
 }
 
 void Game::createWindow () {

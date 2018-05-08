@@ -11,6 +11,7 @@ StateMainGame::StateMainGame( Game &game )
 {
     this->playedEndSound = false;
     this->gameOver = false;
+    this->gameWon = false;
 
     sprites.fitToScreen( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create( sf::Vector2i( FIELD_ROWS, FIELD_CELLS ));
@@ -35,6 +36,28 @@ void StateMainGame::draw() {
     fruit.draw( window );
     snake.draw( window );
     score.draw( window );
+
+    if ( gameWon ) {
+        drawTexture( Texture::VICTORY );
+
+    } else if ( gameOver ) {
+        drawTexture( Texture::GAME_OVER );
+    }
+}
+
+void StateMainGame::drawTexture( std::string textureName ) {
+    const sf::Texture &texture = game.getTextureManager().getTexture( textureName );
+    float height = texture.getSize().x;
+    float width = texture.getSize().y;
+
+    sf::Sprite sprite;
+    sprite.setTexture( texture );
+    sprite.setOrigin( height / 2, width / 2 );
+
+    sf::RenderWindow &window = game.getWindow();
+    sprite.setPosition( window.getSize().x / 2, window.getSize().y / 2 );
+
+    window.draw( sprite );
 }
 
 void StateMainGame::handleInput() {
@@ -73,7 +96,6 @@ void StateMainGame::update() {
             handleSnakeMovement();
             handleFruit();
 
-            //todo won condition
         } else {
             turnRestart();
         }
@@ -85,16 +107,12 @@ void StateMainGame::update() {
         }
 
         snake.deleteBodyPart();
-        /**
-         *  todo - game over state:
-         *  - game over title
-         */
     }
 }
 
 void StateMainGame::stopState() {
     bool isPlaying = game.getSoundManager().isPlaying( Audio::END );
-    if( isPlaying ) {
+    if ( isPlaying ) {
         game.getSoundManager().stopSound( Audio::END );
     }
 

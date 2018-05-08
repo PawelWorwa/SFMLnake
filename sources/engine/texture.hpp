@@ -10,6 +10,8 @@ class Texture {
         static const std::string MAIN_MENU_BACKGROUND;
         static const std::string MAIN_GAME_TEXTURES;
         static const std::string SCORE_TEXTURES;
+        static const std::string GAME_OVER;
+        static const std::string VICTORY;
 };
 
 #endif // TEXTURE_H
