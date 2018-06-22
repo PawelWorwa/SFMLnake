@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 
 set(CMAKE_CXX_STANDARD 11)
 
-project(SFMLnake VERSION 0.8.2)
+project(SFMLnake VERSION 0.8.3)
 
 configure_file(version.hpp.in version.hpp)
 

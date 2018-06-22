@@ -71,3 +71,7 @@ void Score::fitToScreen( float maxHeight ) {
     float currentHeight = texture.getSize().y;
     scale = (currentHeight * maxHeight / 100.0f ) / 100.0f;
 }
+
+int Score::getScore() {
+    return score;
+}

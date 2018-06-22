@@ -178,3 +178,7 @@ void Snake::deleteBodyPart () {
         parts.erase( parts.begin());
     }
 }
+
+Direction Snake::getDirection() {
+    return currentDirection;
+}

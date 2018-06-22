@@ -11,6 +11,7 @@ class Collision {
         virtual ~Collision ();
 
         bool withFruit ( sf::FloatRect fruitBoundingBox, sf::FloatRect snakeHeadBoundingBox );
+        bool withFruit ( sf::FloatRect fruitBoundingBox, std::vector< sf::Sprite > snakeBodyparts );
         bool withBorders ( sf::FloatRect snakeHeadBoundingBox, sf::Vector2u gameFieldDimensions );
         bool withSnake ( Snake snake );
 };

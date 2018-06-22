@@ -8,8 +8,7 @@ My **ToDo** checklist - thinks I want to learns:
 
 #### Part of learning process
 - [X] learn cmake (basics)
-- [] apply open sonar;	
-- [] apply travis;	
+- [X] apply open sonar (locally or using travis);	
 - [] be proud of what I created :-)		.
 
 #### Graphics:

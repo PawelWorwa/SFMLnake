@@ -12,6 +12,7 @@ StateMainGame::StateMainGame( Game &game )
     this->playedEndSound = false;
     this->gameOver = false;
     this->gameWon = false;
+    this->fruitsToWin = FIELD_ROWS * FIELD_CELLS - 1; //head
 
     sprites.fitToScreen( getPlayableFieldSize(), sf::Vector2f( FIELD_ROWS, FIELD_CELLS ));
     field.create( sf::Vector2i( FIELD_ROWS, FIELD_CELLS ));
@@ -71,7 +72,7 @@ void StateMainGame::handleInput() {
                 break;
 
             case sf::Event::KeyPressed :
-                if ( gameOver ) {
+                if ( gameOver || gameWon ) {
                     stopState();
                 }
 
@@ -86,11 +87,10 @@ void StateMainGame::handleInput() {
 }
 
 void StateMainGame::update() {
-    if ( !gameOver && isCollision()) {
-        gameOver = true;
-    }
+    if ( score.getScore() == fruitsToWin ) {
+        gameWon = true;
 
-    if ( !gameOver ) {
+    } else if ( !gameOver && !isCollision()) {
         int turnDuration = clock.getElapsedTime().asMilliseconds();
         if ( turnDuration <= TURN_DURATION_MS ) {
             handleSnakeMovement();
@@ -101,6 +101,7 @@ void StateMainGame::update() {
         }
 
     } else {
+        gameOver = true;
         if ( !playedEndSound ) {
             game.getSoundManager().playSound( Audio::END );
             playedEndSound = true;
@@ -133,16 +134,16 @@ sf::Vector2f StateMainGame::getPlayableFieldSize() {
 }
 
 void StateMainGame::handlePlayerInput() {
-    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left )) {
+    if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) && snake.getDirection() != Direction::RIGHT ) {
         snake.setNewDirection( Direction::LEFT );
 
-    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
+    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) && snake.getDirection() != Direction::DOWN ) {
         snake.setNewDirection( Direction::UP );
 
-    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right )) {
+    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) && snake.getDirection() != Direction::LEFT ) {
         snake.setNewDirection( Direction::RIGHT );
 
-    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down )) {
+    } else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) && snake.getDirection() != Direction::UP ) {
         snake.setNewDirection( Direction::DOWN );
     }
 }
@@ -167,11 +168,9 @@ void StateMainGame::handleFruit() {
     bool isFruitEaten = collision.withFruit( fruit.getFloatRect(), snake.getHeadElementFloatRect());
     if ( isFruitEaten ) {
         snake.grow();
-        // todo - fix random location (collision with snake)
-        fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
+        randomizeFruit();
         score.increaseScore();
         game.getSoundManager().playSound( Audio::EAT );
-
     }
 }
 
@@ -183,5 +182,14 @@ void StateMainGame::turnRestart() {
 void StateMainGame::handleMusic() {
     if ( sf::Keyboard::isKeyPressed( sf::Keyboard::M )) {
         game.getSoundManager().changeMusicState();
+    }
+}
+
+void StateMainGame::randomizeFruit() {
+    while ( true ) {
+        fruit.randomizePosition( sf::Vector2f( rand() % FIELD_ROWS, rand() % FIELD_CELLS ));
+        if ( !collision.withFruit( fruit.getFloatRect(), snake.getParts())) {
+            break;
+        }
     }
 }

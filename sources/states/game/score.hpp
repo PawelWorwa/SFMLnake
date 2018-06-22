@@ -27,6 +27,7 @@ class Score {
         void draw( sf::RenderWindow& window );
         void fitToScreen( float maxHeight );
         void increaseScore();
+        int getScore();
 };
 
 #endif //SFMLNAKE_SCORE_HPP

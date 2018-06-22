@@ -18,7 +18,7 @@ class StateMainGame : public GameState {
     private:
         static const int FIELD_ROWS = 10;
         static const int FIELD_CELLS = 10;
-        static const int TURN_DURATION_MS = 500;
+        static const int TURN_DURATION_MS = 200;
         static const int FIELD_OFFSET_PERCENT = 10;
 
         Game &game;
@@ -39,8 +39,10 @@ class StateMainGame : public GameState {
         void handleMusic();
         void handleFruit();
         void turnRestart();
+        void randomizeFruit();
         void drawTexture( std::string textureName );
 
+        unsigned int fruitsToWin;
         bool playedEndSound;
         bool gameOver;
         bool gameWon;

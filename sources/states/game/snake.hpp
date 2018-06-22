@@ -43,6 +43,7 @@ class Snake {
         std::vector< sf::Sprite > getParts();
         void grow ();
         void deleteBodyPart ();
+        Direction getDirection();
 };
 
 #endif // SNAKE_H
