@@ -1,5 +1,5 @@
 #include "stateMainGame.hpp"
-#include "states/menu/stateMainMenu.hpp"
+#include "../menu/stateMainMenu.hpp"
 
 StateMainGame::StateMainGame( Game &game )
         : game( game ),

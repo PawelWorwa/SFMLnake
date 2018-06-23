@@ -10,8 +10,8 @@
 
 class Game {
     private:
-        static const int WIDTH = 800;
-        static const int HEIGHT = 600;
+        static const int WIDTH = 1200;
+        static const int HEIGHT = 800;
         static const int FPS = 30;
 
         bool exitGame;

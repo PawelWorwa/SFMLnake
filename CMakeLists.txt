@@ -141,8 +141,8 @@ add_executable(SFMLnake
         sources/states/game/field.hpp
         sources/states/game/snake.cpp
         sources/states/game/snake.hpp
-        sources/stateMainGame.cpp
-        sources/stateMainGame.hpp
+        sources/states/game/stateMainGame.cpp
+        sources/states/game/stateMainGame.hpp
         sources/engine/soundManager.hpp
         sources/states/game/Collision.cpp
         sources/states/game/Collision.hpp

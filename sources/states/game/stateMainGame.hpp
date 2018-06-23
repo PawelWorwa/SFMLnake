@@ -2,23 +2,23 @@
 #define STATEMAINGAME_H
 
 #include <SFML/Window/Event.hpp>
-#include <SFML/AUDIO/Sound.hpp>
+#include <SFML/Audio/Sound.hpp>
 
-#include "states/gameState.hpp"
-#include "engine/game.hpp"
+#include "../gameState.hpp"
+#include "../../engine/game.hpp"
 
-#include "states/game/gameSprites.hpp"
-#include "states/game/snake.hpp"
-#include "states/game/fruit.hpp"
-#include "states/game/score.hpp"
-#include "states/game/field.hpp"
-#include "states/game/Collision.hpp"
+#include "gameSprites.hpp"
+#include "snake.hpp"
+#include "fruit.hpp"
+#include "score.hpp"
+#include "field.hpp"
+#include "Collision.hpp"
 
 class StateMainGame : public GameState {
     private:
         static const int FIELD_ROWS = 10;
         static const int FIELD_CELLS = 10;
-        static const int TURN_DURATION_MS = 200;
+        static const int TURN_DURATION_MS = 300;
         static const int FIELD_OFFSET_PERCENT = 10;
 
         Game &game;

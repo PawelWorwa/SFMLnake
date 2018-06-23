@@ -75,7 +75,13 @@ void StateMainMenu::stopState() {
 void StateMainMenu::prepareBackground() {
     TextureManager &manager = game.getTextureManager();
     sf::Texture &texture = manager.getTexture( Texture::MAIN_MENU_BACKGROUND );
+    sf::Vector2u windowSize = game.getWindow().getSize();
+    sf::Vector2u textureSize = texture.getSize();
+
     background.setTexture( texture );
+    background.setScale(
+            ( float ) windowSize.x / textureSize.x,
+            ( float ) windowSize.y / textureSize.y );
 }
 
 void StateMainMenu::createButtons() {

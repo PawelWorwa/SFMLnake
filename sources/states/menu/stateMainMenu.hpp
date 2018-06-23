@@ -7,7 +7,7 @@
 
 #include "buttonState.hpp"
 #include "../gameState.hpp"
-#include "../../stateMainGame.hpp"
+#include "../game/stateMainGame.hpp"
 #include "../../engine/game.hpp"
 #include "menuButton.hpp"
 
