@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 
 set(CMAKE_CXX_STANDARD 11)
 
-project(SFMLnake VERSION 0.8.3)
+project(SFMLnake VERSION 1.0.0)
 
 configure_file(version.hpp.in version.hpp)
 
@@ -107,7 +107,7 @@ add_executable(SFMLnake
         media/textures/gameTextures.png
         media/textures/menuButtons.png
         media/textures/menuTheme.png
-        media/textures/score.bmp
+        media/textures/score.png
         media/textures/SFMLlogo.png
         sources/engine/color.cpp
         sources/engine/color.hpp

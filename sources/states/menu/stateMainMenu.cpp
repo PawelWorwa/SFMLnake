@@ -3,9 +3,7 @@
 StateMainMenu::StateMainMenu( Game &game )
         : game( game ),
           playButton( getButtonsTexture()),
-          trophiesButton( getButtonsTexture()),
-          quitButton( getButtonsTexture())
-{
+          quitButton( getButtonsTexture()) {
     this->nextState = nullptr;
 
     prepareBackground();
@@ -46,9 +44,6 @@ void StateMainMenu::update() {
         nextState = std::move( playGameState );
         stopState();
 
-    } else if ( trophiesButton.isClicked( window )) {
-        // todo
-
     } else if ( quitButton.isClicked( window )) {
         game.setExitGame();
         stopState();
@@ -60,7 +55,6 @@ void StateMainMenu::draw() {
     window.draw( background );
 
     playButton.draw( window );
-    trophiesButton.draw( window );
     quitButton.draw( window );
 }
 
@@ -94,20 +88,14 @@ void StateMainMenu::createButtons() {
     int offset = buttonHeight / BUTTON_LOCATION_OFFSET;
 
     playButton.setPosition(
-            sf::Vector2f( windowWidth / BUTTON_TEXTURE_CELLS - buttonWidth, windowHeight - buttonHeight - offset ));
+            sf::Vector2f( (float) windowWidth / BUTTON_TEXTURE_CELLS - buttonWidth, windowHeight - buttonHeight - offset ));
     playButton.addSprite( sf::IntRect( 0, 0, buttonWidth, buttonHeight ), ButtonState::NORMAL );
     playButton.addSprite( sf::IntRect( buttonWidth, 0, buttonWidth, buttonHeight ), ButtonState::PRESSED );
 
-    trophiesButton.setPosition(
-            sf::Vector2f( windowWidth / BUTTON_TEXTURE_CELLS, windowHeight - buttonHeight - offset ));
-    trophiesButton.addSprite( sf::IntRect( 0, buttonHeight, buttonWidth, buttonHeight ), ButtonState::NORMAL );
-    trophiesButton.addSprite( sf::IntRect( buttonWidth, buttonHeight, buttonWidth, buttonHeight ),
-                              ButtonState::PRESSED );
-
     quitButton.setPosition(
-            sf::Vector2f( windowWidth / BUTTON_TEXTURE_CELLS + buttonWidth, windowHeight - buttonHeight - offset ));
-    quitButton.addSprite( sf::IntRect( 0, 2 * buttonHeight, buttonWidth, buttonHeight ), ButtonState::NORMAL );
-    quitButton.addSprite( sf::IntRect( buttonWidth, 2 * buttonHeight, buttonWidth, buttonHeight ),
+            sf::Vector2f( (float) windowWidth / BUTTON_TEXTURE_CELLS, windowHeight - buttonHeight - offset ));
+    quitButton.addSprite( sf::IntRect( 0, buttonHeight, buttonWidth, buttonHeight ), ButtonState::NORMAL );
+    quitButton.addSprite( sf::IntRect( buttonWidth, buttonHeight, buttonWidth, buttonHeight ),
                           ButtonState::PRESSED );
 }
 

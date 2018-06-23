@@ -14,14 +14,13 @@
 class StateMainMenu : public GameState {
     private:
         static const int BUTTON_TEXTURE_ROWS  = 2;
-        static const int BUTTON_TEXTURE_CELLS = 3;
+        static const int BUTTON_TEXTURE_CELLS = 2;
         static const int BUTTON_LOCATION_OFFSET = 10; //%
 
         sf::Sprite background;
         Game& game;
 
         MenuButton playButton;
-        MenuButton trophiesButton;
         MenuButton quitButton;
 
         void createButtons();
