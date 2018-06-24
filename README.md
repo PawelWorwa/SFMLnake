@@ -17,7 +17,7 @@ What makes this project special?. As I’ve created some basic “clones” in t
 
 ![Game_intro](https://i.imgur.com/mHzHH6G.png)
 
-![Game](https://i.imgur.com/XyC7JHT.png))
+![Game](https://i.imgur.com/XyC7JHT.png)
 
 #### Graphics:
 All artworks used within this game is not mine, so to credit authors:
