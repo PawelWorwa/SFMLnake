@@ -13,14 +13,11 @@ Moreover… I’ve never done snake clone before so it was quite new and fun exp
 What makes this project special?. As I’ve created some basic “clones” in the past like pong, tetris but this one as only went all the way to actual working 1.0v :-).
 
 #### Screenshots:
-SFML intro
-![alt text](https://imgur.com/sHdj1HG)
+![SFML intro](https://i.imgur.com/sHdj1HG.png)
 
-INTRO
-![alt text](https://imgur.com/mHzHH6G)
+![Game_intro](https://i.imgur.com/mHzHH6G.png)
 
-GAME
-![alt text](https://imgur.com/XyC7JHT)
+![Game](https://i.imgur.com/XyC7JHT.png))
 
 #### Graphics:
 All artworks used within this game is not mine, so to credit authors:
