@@ -22,7 +22,7 @@ What makes this project special?. As I’ve created some basic “clones” in t
 #### Graphics:
 All artworks used within this game is not mine, so to credit authors:
 
-Main menu background*:  
+Main menu background:  
 https://www.vecteezy.com/vector-art/175289-anaconda-on-branch-illustration
 
 Menu buttons:  
