@@ -16,10 +16,10 @@
 
 class StateMainGame : public GameState {
     private:
-        static const int FIELD_ROWS = 10;
-        static const int FIELD_CELLS = 10;
-        static const int TURN_DURATION_MS = 300;
-        static const int FIELD_OFFSET_PERCENT = 10;
+        const int FIELD_ROWS = 10;
+        const int FIELD_CELLS = 10;
+        const int TURN_DURATION_MS = 300;
+        const int FIELD_OFFSET_PERCENT = 10;
 
         Game &game;
         GameSprites sprites;

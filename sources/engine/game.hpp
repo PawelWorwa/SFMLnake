@@ -10,9 +10,9 @@
 
 class Game {
     private:
-        static const int WIDTH = 1200;
-        static const int HEIGHT = 800;
-        static const int FPS = 30;
+        const int WIDTH = 1200;
+        const int HEIGHT = 800;
+        const int FPS = 30;
 
         bool exitGame;
         sf::RenderWindow window;

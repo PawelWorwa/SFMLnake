@@ -7,9 +7,9 @@
 
 class Score {
     private:
-        static const int SCORE_TEXT_WIDTH = 300; // px
-        static const int DIGIT_WIDTH      = 105; // px
-        static const int SPACE_LENGTH     = 25;  // px
+        const int SCORE_TEXT_WIDTH = 300; // px
+        const int DIGIT_WIDTH      = 105; // px
+        const int SPACE_LENGTH     = 25;  // px
 
         float        scale;
         unsigned int score;

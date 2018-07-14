@@ -13,9 +13,9 @@
 
 class StateMainMenu : public GameState {
     private:
-        static const int BUTTON_TEXTURE_ROWS  = 2;
-        static const int BUTTON_TEXTURE_CELLS = 2;
-        static const int BUTTON_LOCATION_OFFSET = 10; //%
+        const int BUTTON_TEXTURE_ROWS  = 2;
+        const int BUTTON_TEXTURE_CELLS = 2;
+        const int BUTTON_LOCATION_OFFSET = 10; //%
 
         sf::Sprite background;
         Game& game;
