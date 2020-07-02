@@ -1,5 +1,9 @@
 # SFMLnake
-Snake clone using SFML library
+Snake clone using SFML library 
+
+**Edited:** Despite the fact this project it's a little bit rough on the edges, it's 'sentimental' as it's the first project I've worked on to the very end. \
+I'm leaving it as a reference for myself to track my skill progression. \
+Since you're reading this, please consider checking my latest project: [Tetris clone](https://github.com/PawelWorwa/SFMLris) ;-)
 
 #### Introduction
 This project was made purely for learning purposes. Mostly to:  
